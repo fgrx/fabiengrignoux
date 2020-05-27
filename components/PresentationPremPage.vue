@@ -1,27 +1,19 @@
 <template>
   <div>
-    <v-row align="center">
-      <v-col cols="12" sm="6">
-        <AnimationFabien2 />
+    <v-row align="right">
+      <v-col cols="12" sm="4">
+        <v-img :src="presentation.image.url" alt="Portrait Fabien Grignoux" class="portrait"></v-img>
       </v-col>
       <v-col cols="12" sm="6">
         <h2>{{ presentation.title }}</h2>
-        <div
-          v-if="presentation.content"
-          v-html="$md.render(presentation.content)"
-        ></div>
+        <div v-if="presentation.content" v-html="$md.render(presentation.content)"></div>
       </v-col>
     </v-row>
   </div>
 </template>
 
 <script>
-import AnimationFabien2 from './AnimationFabien2.vue'
-
 export default {
-  components: {
-    AnimationFabien2
-  },
   props: {
     presentation: {
       type: Object,
@@ -31,4 +23,5 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

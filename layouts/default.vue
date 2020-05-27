@@ -68,20 +68,9 @@
         <div class="piedPage">
           <v-row>
             <v-col>
-              <p>Fabien Grignoux</p>
-              <p>Développeur web front-end & back-end</p>
-            </v-col>
-            <v-col>
-              <p>
-                <v-btn @click="openDialog" color="accent" width="230" class="button__header">
-                  <v-icon>mdi-email-edit</v-icon>Me contacter
-                </v-btn>
-              </p>
-              <p>
-                <v-btn color="secondary" width="230" class="button__header">
-                  <v-icon>mdi-file-document-edit-outline</v-icon>Demander un devis
-                </v-btn>
-              </p>
+              <span class='footer__text footer__fg'>Fabien Grignoux</span></br>
+              <span class='footer__text footer__devlyon'>Développeur web basé à Lyon</span></br >
+              <span class='footer__text footer__frontback' >front-end & back-end</span>
             </v-col>
             <v-col>
               <p>
@@ -99,6 +88,19 @@
                 </v-btn>
               </p>
             </v-col>
+            <v-col>
+              <p>
+                <v-btn @click="openDialog" color="accent" width="230" class="button__header">
+                  <v-icon>mdi-email-edit</v-icon>Me contacter
+                </v-btn>
+              </p>
+              <p>
+                <v-btn color="secondary" width="230" class="button__header">
+                  <v-icon>mdi-file-document-edit-outline</v-icon>Demander un devis
+                </v-btn>
+              </p>
+            </v-col>
+
           </v-row>
         </div>
       </v-container>
@@ -117,7 +119,7 @@ export default {
       email: '',
       submittedMessage: '',
       notificationType: '',
-      dialogContact: true,
+      dialogContact: false,
       items: [
         {
           icon: 'mdi-home',

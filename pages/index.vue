@@ -58,7 +58,7 @@
         </v-row>
         <v-container>
           <v-row justify="center">
-            <v-btn to="./portfolio" color="primary">Voir plus de projets</v-btn>
+            <v-btn to="./portfolio" color="secondary">Voir plus de projets</v-btn>
           </v-row>
         </v-container>
       </v-container>
@@ -69,6 +69,15 @@
         v-if="premierePage.presentation"
         :presentation="premierePage.presentation"
       />
+
+      <v-row>
+        <v-col cols="12" sm="6">
+          <h2>Mes technologies</h2>
+        </v-col>
+        <v-col cols="12" sm="6">
+          <AnimationFabien2 />
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>
@@ -82,10 +91,12 @@ import premPageQuery from '@/graphql/premPage'
 import Portfolio from '../components/Portfolio.vue'
 import Forme from '../components/Forme.vue'
 import AnimationFabien from '@/components/AnimationFabien'
+import AnimationFabien2 from '@/components/AnimationFabien2.vue'
 
 export default {
   components: {
     AnimationFabien,
+    AnimationFabien2,
     Forme,
     Portfolio,
     PresentationPremPage

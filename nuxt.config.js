@@ -44,7 +44,8 @@ export default {
     {
       src: '~/plugins/lazyload.js',
       mode: 'client'
-    }
+    },
+    { src: '~plugins/ga.js', mode: 'client' }
   ],
   /*
    ** Nuxt.js dev-modules
