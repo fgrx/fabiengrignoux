@@ -1,7 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  mode: 'spa',
+  mode: 'universal',
   /*
    ** Headers of the page
    */
@@ -92,7 +92,7 @@ export default {
         light: {
           primary: '#1d976c',
           accent: '#000080',
-          secondary: '#50389a ',
+          secondary: '#50389a',
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,

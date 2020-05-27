@@ -107,6 +107,9 @@ export default {
       premierePage: {}
     }
   },
+  head() {
+    title: 'Fabien Grignoux développeur web Front-end et back-end à Lyon'
+  },
   apollo: {
     portfolios: {
       query: porfoliosQuery,

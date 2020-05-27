@@ -2,10 +2,10 @@ export default ({ app }) => {
   /*
    ** Seulement exécuté côté client et en mode production
    */
-  if (process.env.NODE_ENV !== 'production') return
-  /*
-   ** Inclusion du script Google Analytics
-   */
+  if (process.env.NODE_ENV !== 'production')
+    return /*
+     ** Inclusion du script Google Analytics
+     */
   ;(function(i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r
     ;(i[r] =

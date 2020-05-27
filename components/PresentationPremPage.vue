@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row align="right">
+    <v-row>
       <v-col cols="12" sm="4">
         <v-img :src="presentation.image.url" alt="Portrait Fabien Grignoux" class="portrait"></v-img>
       </v-col>
