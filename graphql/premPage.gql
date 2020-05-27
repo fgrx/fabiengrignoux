@@ -1,0 +1,22 @@
+query PremPage {
+  premierePage {
+    headsite
+
+    services {
+      title
+      content
+      image {
+        url
+      }
+      svg
+    }
+    presentation {
+      title
+      content
+      image {
+        url
+      }
+      svg
+    }
+  }
+}

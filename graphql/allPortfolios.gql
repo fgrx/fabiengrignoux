@@ -1,0 +1,18 @@
+query Porfolios($limit: Int) {
+  portfolios(limit: $limit, sort: "order:desc") {
+    slug
+    title
+    technos {
+      title
+      id
+      image {
+        url
+        size: formats
+      }
+    }
+    image {
+      url
+      size: formats
+    }
+  }
+}

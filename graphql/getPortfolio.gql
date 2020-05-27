@@ -1,0 +1,28 @@
+query Porfolios($slug: String) {
+  portfolios(where: { slug: $slug }) {
+    id
+    slug
+    title
+    order
+    description
+    content
+    url
+    urlgithub
+    technos {
+      title
+      id
+      image {
+        url
+        size: formats
+      }
+    }
+    image {
+      url
+      size: formats
+    }
+    images {
+      url
+      size: formats
+    }
+  }
+}
