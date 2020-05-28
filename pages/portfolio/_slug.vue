@@ -8,7 +8,12 @@
           <div class="description">{{ portfolio.description }}</div>
 
           <div class="links">
-            <v-btn v-if="portfolio.url" :href="portfolio.url" target="blank" color="primary">
+            <v-btn
+              v-if="portfolio.url"
+              :href="portfolio.url"
+              target="blank"
+              color="primary"
+            >
               <v-icon>mdi-link</v-icon>Voir en ligne
             </v-btn>
             <v-btn
@@ -38,7 +43,11 @@
                   ></v-img>
                   <div class="portfolio__techno_list">
                     <div v-for="techno in portfolio.technos" :key="techno.id">
-                      <ItemTechno :techno="techno" class="item__techno" />
+                      <ItemTechno
+                        :techno="techno"
+                        mode="link"
+                        class="item__techno"
+                      />
                     </div>
                   </div>
                 </div>
@@ -51,6 +60,9 @@
       <v-row>
         <v-col cols="12" sm="7">
           <div class="content" v-html="$md.render(portfolio.content)"></div>
+          <div class="phrasechoc" v-if="portfolio.phrasechoc">
+            {{ portfolio.phrasechoc }}
+          </div>
         </v-col>
 
         <v-col cols="12" sm="5">

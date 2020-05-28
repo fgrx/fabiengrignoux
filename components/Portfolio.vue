@@ -13,7 +13,11 @@
             </v-card-title>
 
             <div class="portfolio__techno_list">
-              <div v-for="techno in portfolio.technos" :key="techno.id">
+              <div
+                v-for="techno in portfolio.technos"
+                :key="techno.id"
+                class="item-techno"
+              >
                 <ItemTechno :techno="techno" class="item__techno" />
               </div>
             </div>
@@ -65,6 +69,11 @@ export default {
   display: flex;
   &:hover {
     opacity: 1;
+  }
+
+  .item-techno {
+    margin-right: 10px;
+    margin-bottom: 10px;
   }
 }
 </style>

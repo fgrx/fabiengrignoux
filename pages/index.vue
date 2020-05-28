@@ -119,7 +119,7 @@
                 v-for="techno in technosfront"
                 :key="techno.id"
               >
-                <ItemTechno :techno="techno" class="item__techno" />
+                <ItemTechno :techno="techno" mode="link" class="item__techno" />
               </v-col>
             </v-row>
           </v-col>

@@ -1,0 +1,29 @@
+query Technos($slug: String) {
+  technos(where: { slug: $slug }) {
+    id
+    title
+    slug
+    type
+    description
+    image {
+      url
+      size: formats
+    }
+    portfolios {
+      slug
+      title
+      order
+      technos {
+        title
+        id
+        image {
+          url
+        }
+      }
+      image {
+        url
+        size: formats
+      }
+    }
+  }
+}
