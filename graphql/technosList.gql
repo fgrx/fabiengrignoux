@@ -1,0 +1,11 @@
+query technosListQuery($type: String) {
+	technos(where: { type: $type }, sort: "order:asc") {
+		id
+		title
+		type
+		image {
+			url
+			size: formats
+		}
+	}
+}

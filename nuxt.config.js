@@ -28,6 +28,12 @@ export default {
       }
     ]
   },
+  env: {
+    siteUrl: 'https://developpeurfullstack.fr',
+    siteTitle: 'Fabien Grignoux, développeur web à Lyon',
+    siteDescription:
+      "J'accompagne les entreprises à développer les outils web dont elles ont besoin pour atteindre leurs objectifs."
+  },
   /*
    ** Customize the progress-bar color
    */
@@ -45,7 +51,9 @@ export default {
       src: '~/plugins/lazyload.js',
       mode: 'client'
     },
-    { src: '~plugins/ga.js', mode: 'client' }
+    { src: '~plugins/ga.js', mode: 'client' },
+    { src: '~/plugins/jsonld' },
+    { src: '~/plugins/eventBus' }
   ],
   /*
    ** Nuxt.js dev-modules
@@ -58,6 +66,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/apollo',
     '@nuxtjs/markdownit',
+    '@nuxtjs/axios',
     [
       'nuxt-fontawesome',
       {
@@ -80,6 +89,7 @@ export default {
     breaks: true,
     injected: true
   },
+  axios: {},
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module

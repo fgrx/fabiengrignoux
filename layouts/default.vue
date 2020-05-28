@@ -20,7 +20,8 @@
       </v-container>
       <v-dialog v-model="dialogContact" max-width="600" max-height="600" overlay-color="white">
         <v-card>
-          <v-card-title class="headline">Contactez moi</v-card-title>
+          <v-card-title  class="headline"><span v-if="!isDevis">Contactez moi</span><span v-else>Parlez-moi de votre projet</span></v-card-title>
+
 
           <v-card-text>
             <form
@@ -30,7 +31,18 @@
               v-if="!submittedMessage"
               v-on:submit.prevent="sendMessage"
             >
-              <p>
+
+                <p>
+                <v-text-field
+                  label="Votre nom"
+                  v-model="nom"
+                  required
+                  type="text"
+                  name="nom"
+                ></v-text-field>
+              </p>
+
+             <p>
                 <v-text-field
                   label="Votre email"
                   v-model="email"
@@ -39,11 +51,35 @@
                   name="email"
                 ></v-text-field>
               </p>
+
+                           <p>
+                <v-text-field
+                  label="Votre Téléphone"
+                  v-model="telephone"
+                  type="text"
+                  name="telephone"
+                ></v-text-field>
+              </p>
+
               <p>
-                <v-textarea outlined name="message" v-model="message" label="Votre message" value></v-textarea>
+                <v-text-field
+                  label="Entreprise"
+                  v-model="entreprise"
+                
+                  type="text"
+                  name="entreprise"
+                ></v-text-field>
+              </p>
+
+
+
+              <p>
+                <v-textarea v-if="!isDevis" outlined name="message" v-model="message" label="Votre message" value></v-textarea>
+                 <v-textarea v-if="isDevis" outlined name="message" v-model="message" label="Décrivez-moi votre projet" value></v-textarea>
               </p>
               <p>
-                <v-btn color="primary" type="submit">Envoyer</v-btn>
+                <v-btn color="accent" type="submit">Envoyer</v-btn>
+                <v-btn color="secondary" @click="closeDialog">Annuler</v-btn>
               </p>
             </form>
             <div v-if="submittedMessage" v-html="submittedMessage"></div>
@@ -73,18 +109,24 @@
               <span class='footer__text footer__frontback' >front-end & back-end</span>
             </v-col>
             <v-col>
+
               <p>
+                <v-btn href="mailto:fabien.grignoux@outlook.com" color="secondary" text>
+                  <v-icon>mdi-email</v-icon>fabien.grignoux@outlook.com
+                </v-btn>
+              </p>
+                            <p>
+                <v-btn href="tel:+33624867169" color="secondary" text>
+                  <v-icon>mdi-phone</v-icon>06.24.86.71.69
+                </v-btn>
+              </p>
+                            <p>
                 <v-btn
                   href="https://www.linkedin.com/in/fabien-grignoux-3ab9a4167/"
                   color="secondary"
                   text
                 >
                   <v-icon>mdi-linkedin</v-icon>LinkedIn
-                </v-btn>
-              </p>
-              <p>
-                <v-btn href="mailto:fabien.grignoux@outlook.com" color="secondary" text>
-                  <v-icon>mdi-email</v-icon>fabien.grignoux@outlook.com
                 </v-btn>
               </p>
             </v-col>
@@ -95,13 +137,25 @@
                 </v-btn>
               </p>
               <p>
-                <v-btn color="secondary" width="230" class="button__header">
+                <v-btn @click="openDevis" color="secondary" width="230" class="button__header">
                   <v-icon>mdi-file-document-edit-outline</v-icon>Demander un devis
                 </v-btn>
               </p>
             </v-col>
 
           </v-row>
+          <v-snackbar
+            v-model="snackbar"
+          >
+            {{ textSnackbar }}
+            <v-btn
+              color="primary"
+              text
+              @click="snackbar = false"
+            >
+              Close
+            </v-btn>
+          </v-snackbar>
         </div>
       </v-container>
     </v-footer>
@@ -117,9 +171,15 @@ export default {
       fixed: false,
       message: '',
       email: '',
+      nom:"",
+      entreprise:"",
+      telephone:"",
       submittedMessage: '',
       notificationType: '',
+      snackbar:"",
+      textSnackbar:"",
       dialogContact: false,
+      isDevis:false,
       items: [
         {
           icon: 'mdi-home',
@@ -144,16 +204,44 @@ export default {
       title: 'Fabien Grignoux'
     }
   },
+  created () {
+    this.$bus.$on('openContact', data=> { 
+      this.openDialog()
+   }) 
+    this.$bus.$on('openDevis', data=> { 
+      this.openDevis()
+   }) 
+},
   methods: {
+    closeDialog(){
+      this.dialogContact = false
+    },
     openDialog() {
+      this.isDevis=false
       this.dialogContact = true
     },
+    openDevis() {
+      this.isDevis=true
+      this.dialogContact = true
+    },
+       createMessage(){
+        const corpsMessage = `Email : ${this.email}\n\nMessage : ${this.message}`
+        if(!this.isDevis)return corpsMessage
+
+        const corpsDevis = `Demande de devis \n\nNom : ${this.nom}\nEntreprise ${this.entreprise}\nTéléphone ${this.telephone}\n${corpsMessage}`
+        return corpsDevis
+      },
     async sendMessage() {
+      this.dialogContact = false
       const urlMail =
         'https://wegfm6uwi8.execute-api.eu-central-1.amazonaws.com/sendmail/contact-me'
+
+
+      const sendMessage=this.createMessage()
+
       const mail = {
         email: this.email,
-        message: this.message
+        message: sendMessage
       }
 
       const result = await this.$axios({
@@ -163,13 +251,13 @@ export default {
       })
 
       if ((result.status = 200)) {
-        this.submittedMessage =
-          '<div class="is-success notification"><p>Votre message a bien été envoyé.</p><p>Je vous répondrai très prochainement.</p></div>'
-      } else {
-        this.submittedMessage =
-          '<div class="is-alert notification"><p>Une erreur s\'est produite. Veuillez me contacter à fabien.grignoux@outlook.com</p></div>'
-      }
+        this.snackbar=true
+        this.textSnackbar="Votre message a été envoyé avec succès"
+       } else {
+         this.snackbar=true
+        this.textSnackbar="Une erreur est survenue :("      }
     }
-  }
+  },
+
 }
 </script>
