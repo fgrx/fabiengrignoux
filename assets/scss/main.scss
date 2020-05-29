@@ -15,6 +15,12 @@ h3,
 .v-card,
 p {
 }
+code {
+  box-shadow: 0 !important;
+  &::before {
+    content: '' !important;
+  }
+}
 
 .footerPage {
   margin-top: 5em;
@@ -40,8 +46,7 @@ p {
     font-family: 'Raleway', sans-serif !important;
     color: #091584;
     // background: -webkit-gradient(
-    // linear, // left center,
-    // right center,
+    // linear, // left center, // right center,
     // from(#091584),
     // to(#a60df7)
     // );
@@ -79,7 +84,7 @@ h1 {
 h2 {
   font-family: 'Raleway', sans-serif;
   padding: 1em 0 0.5em 0;
-  font-size: 3em;
+  font-size: 2.3em;
   color: #142198;
   &.homepage {
     font-size: 2em !important;
@@ -178,12 +183,10 @@ h3 {
   width: 90%;
   // -webkit-box-shadow: 10px 10px 47px -22px rgba(0, 0, 0, 0.75); // -moz-box-shadow: 10px 10px 47px -22px rgba(0, 0, 0, 0.75); // box-shadow: 10px 10px 47px -22px rgba(0, 0, 0, 0.75);
 }
-
 .description {
   font-family: 'Raleway', sans-serif;
   font-size: 1.4em;
 }
-
 .phrasechoc {
   border-left: 3px solid #155799;
   padding-left: 1em;

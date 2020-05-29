@@ -12,20 +12,10 @@
                 v-html="$md.render(premierePage.headsite)"
               ></div>
               <div id="contact__buttons">
-                <v-btn
-                  color="accent"
-                  @click="contactAction"
-                  width="230"
-                  class="button__header"
-                >
+                <v-btn color="accent" @click="contactAction" width="230" class="button__header">
                   <v-icon>mdi-email-edit</v-icon>Me contacter
                 </v-btn>
-                <v-btn
-                  @click="getDevisAction"
-                  color="secondary"
-                  width="230"
-                  class="button__header"
-                >
+                <v-btn @click="getDevisAction" color="secondary" width="230" class="button__header">
                   <v-icon>mdi-file-document-edit-outline</v-icon>Demander un
                   devis
                 </v-btn>
@@ -39,12 +29,12 @@
       </section>
     </div>
 
-    <section v-if="premierePage.pitch[0].content">
+    <section v-for="pitch in premierePage.pitch" :key="pitch.id">
       <v-container class="container__index container__pitch">
         <v-row class="flex-sm-row-reverse">
           <v-col cols="12" sm="7">
-            <h2>{{ premierePage.pitch[0].title }}</h2>
-            <div v-html="$md.render(premierePage.pitch[0].content)"></div>
+            <h2>{{ pitch.title }}</h2>
+            <div v-html="$md.render(pitch.content)"></div>
           </v-col>
           <v-col cols="12" sm="5">
             <AnimationFabien2 />
@@ -60,11 +50,7 @@
         <v-row>
           <v-col v-for="service in premierePage.services" :key="service.id">
             <div class="espace__logo">
-              <img
-                class="illustration"
-                :src="require('@/assets/' + service.svg)"
-                alt
-              />
+              <img class="illustration" :src="require('@/assets/' + service.svg)" alt />
             </div>
             <h3>{{ service.title }}</h3>
             <p>{{ service.content }}</p>
@@ -91,9 +77,7 @@
           </v-row>
           <v-container>
             <v-row justify="center">
-              <v-btn to="./portfolio" color="secondary"
-                >Voir plus de projets</v-btn
-              >
+              <v-btn to="./portfolio" color="secondary">Voir plus de projets</v-btn>
             </v-row>
           </v-container>
         </v-container>
@@ -113,12 +97,7 @@
           <v-col cols="12" sm="5">
             <h3>Mes technos front-end</h3>
             <v-row>
-              <v-col
-                cols="6"
-                sm="4"
-                v-for="techno in technosfront"
-                :key="techno.id"
-              >
+              <v-col cols="6" sm="4" v-for="techno in technosfront" :key="techno.id">
                 <ItemTechno :techno="techno" mode="link" class="item__techno" />
               </v-col>
             </v-row>
@@ -126,13 +105,8 @@
           <v-col cols="12" offset-md="2" sm="5" class="technos__block">
             <h3>Mes technos back-end</h3>
             <v-row>
-              <v-col
-                cols="6"
-                sm="4"
-                v-for="techno in technosback"
-                :key="techno.id"
-              >
-                <ItemTechno :techno="techno" class="item__techno" />
+              <v-col cols="6" sm="4" v-for="techno in technosback" :key="techno.id">
+                <ItemTechno :techno="techno" mode="link" class="item__techno" />
               </v-col>
             </v-row>
           </v-col>
@@ -150,7 +124,7 @@ import porfoliosQuery from '@/graphql/allPortfolios'
 import premPageQuery from '@/graphql/premPage'
 import technosListQuery from '@/graphql/technosList'
 
-import Portfolio from '../components/Portfolio.vue'
+import Portfolio from '../components/ItemPortfolio.vue'
 import Forme from '../components/Forme.vue'
 import AnimationFabien from '@/components/AnimationFabien'
 import AnimationFabien2 from '@/components/AnimationFabien2.vue'
@@ -313,6 +287,19 @@ export default {
 
   padding-top: 0em;
   padding-bottom: 4em;
+}
+
+h2 {
+  font-family: 'Raleway', sans-serif;
+  padding: 1em 0 0.5em 0;
+  font-size: 3em;
+  &.homepage {
+    font-size: 2em !important;
+  }
+  @media screen and (max-width: 640px) {
+    text-align: center;
+    font-size: 1.8em;
+  }
 }
 
 .container__technos {

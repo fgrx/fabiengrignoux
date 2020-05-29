@@ -1,0 +1,31 @@
+query Posts {
+	articles(sort: "createdAt:desc") {
+		slug
+		title
+		subtitle
+		description
+		content
+		phrasechoc
+		image {
+			url
+			size: formats
+		}
+		tags {
+			id
+			title
+			image {
+				url
+				size: formats
+			}
+		}
+		technos {
+			title
+			id
+			slug
+			image {
+				url
+				size: formats
+			}
+		}
+	}
+}

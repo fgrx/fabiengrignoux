@@ -3,6 +3,7 @@ query technosListQuery($type: String) {
 		id
 		title
 		type
+		slug
 		image {
 			url
 			size: formats

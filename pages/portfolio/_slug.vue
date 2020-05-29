@@ -1,92 +1,79 @@
 <template>
   <v-container>
-    <div v-for="portfolio in portfolios" :key="portfolio.id">
-      <v-row align="center" justify="center" class="flex-sm-row-reverse">
-        <v-col cols="12" xs="12" sm="5">
-          <h1 v-if="portfolio.title">{{ portfolio.title }}</h1>
+    <v-row align="center" justify="center" class="flex-sm-row-reverse">
+      <v-col cols="12" xs="12" sm="5">
+        <h1 v-if="portfolio.title">{{ portfolio.title }}</h1>
 
-          <div class="description">{{ portfolio.description }}</div>
+        <div class="description">{{ portfolio.description }}</div>
 
-          <div class="links">
-            <v-btn
-              v-if="portfolio.url"
-              :href="portfolio.url"
-              target="blank"
-              color="primary"
-            >
-              <v-icon>mdi-link</v-icon>Voir en ligne
-            </v-btn>
-            <v-btn
-              v-if="portfolio.urlgithub"
-              :href="portfolio.urlgithub"
-              target="blank"
-              color="secondary"
-            >
-              <v-icon>mdi-github</v-icon>Github
-            </v-btn>
-          </div>
-        </v-col>
-        <v-col cols="12" xs="12" sm="6">
-          <div class="portfolio__top">
-            <div class="portfolio__container__row">
-              <v-row align="center" justify="center">
-                <div>
-                  <v-img
-                    :src="
+        <div class="links">
+          <v-btn v-if="portfolio.url" :href="portfolio.url" target="blank" color="primary">
+            <v-icon>mdi-link</v-icon>Voir en ligne
+          </v-btn>
+          <v-btn
+            v-if="portfolio.urlgithub"
+            :href="portfolio.urlgithub"
+            target="blank"
+            color="secondary"
+          >
+            <v-icon>mdi-github</v-icon>Github
+          </v-btn>
+        </div>
+      </v-col>
+      <v-col cols="12" xs="12" sm="6">
+        <div class="portfolio__top">
+          <div class="portfolio__container__row">
+            <v-row align="center" justify="center">
+              <div>
+                <v-img
+                  :src="
                       portfolio.image.size.medium
                         ? portfolio.image.size.medium.url
                         : portfolio.image.url
                     "
-                    :alt="'logo de l\'article ' + portfolio.title"
-                    class="portfolio__imagePrincipale"
-                    max-width="350"
-                  ></v-img>
-                  <div class="portfolio__techno_list">
-                    <div v-for="techno in portfolio.technos" :key="techno.id">
-                      <ItemTechno
-                        :techno="techno"
-                        mode="link"
-                        class="item__techno"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </v-row>
-            </div>
-          </div>
-        </v-col>
-      </v-row>
-
-      <v-row>
-        <v-col cols="12" sm="7">
-          <div class="content" v-html="$md.render(portfolio.content)"></div>
-          <div class="phrasechoc" v-if="portfolio.phrasechoc">
-            {{ portfolio.phrasechoc }}
-          </div>
-        </v-col>
-
-        <v-col cols="12" sm="5">
-          <div class="capture">
-            <div v-for="capture in portfolio.images" :key="capture.id">
-              <v-card class="d-inline-block mx-auto">
-                <v-img
-                  @click="openDialog(capture.url)"
-                  :src="
-                    capture.size.medium ? capture.size.medium.url : capture.url
-                  "
-                  alt="Capture d'écran"
-                  class="portfolio__capture"
+                  :alt="'logo de l\'article ' + portfolio.title"
+                  class="portfolio__imagePrincipale"
                   max-width="350"
                 ></v-img>
-              </v-card>
-            </div>
+                <div class="portfolio__techno_list">
+                  <div v-for="techno in portfolio.technos" :key="techno.id">
+                    <ItemTechno :techno="techno" mode="link" class="item__techno" />
+                  </div>
+                </div>
+              </div>
+            </v-row>
           </div>
-        </v-col>
-      </v-row>
-      <v-dialog v-model="dialog" max-width="800" max-height="800">
-        <v-img :src="imgToOpen" alt="Capture d'écran"></v-img>
-      </v-dialog>
-    </div>
+        </div>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col cols="12" sm="7">
+        <div class="content" v-html="$md.render(portfolio.content)"></div>
+        <div class="phrasechoc" v-if="portfolio.phrasechoc">{{ portfolio.phrasechoc }}</div>
+      </v-col>
+
+      <v-col cols="12" sm="5">
+        <div class="capture">
+          <div v-for="capture in portfolio.images" :key="capture.id">
+            <v-card class="d-inline-block mx-auto">
+              <v-img
+                @click="openDialog(capture.url)"
+                :src="
+                    capture.size.medium ? capture.size.medium.url : capture.url
+                  "
+                alt="Capture d'écran"
+                class="portfolio__capture"
+                max-width="350"
+              ></v-img>
+            </v-card>
+          </div>
+        </div>
+      </v-col>
+    </v-row>
+    <v-dialog v-model="dialog" max-width="800" max-height="800">
+      <v-img :src="imgToOpen" alt="Capture d'écran"></v-img>
+    </v-dialog>
   </v-container>
 </template>
 
@@ -106,17 +93,13 @@ export default {
     }
   },
   apollo: {
-    portfolios: {
+    portfolio: {
       query: portfolioQuery,
       prefetch: true,
       variables() {
         return { slug: this.$route.params.slug }
-      }
-    }
-  },
-  computed: {
-    portfolio() {
-      return this.portfolios.find((p) => p)
+      },
+      update: (data) => data.portfolios[0]
     }
   },
   methods: {

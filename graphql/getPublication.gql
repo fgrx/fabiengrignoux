@@ -1,0 +1,32 @@
+query Posts($slug: String) {
+	articles(where: { slug: $slug }) {
+		slug
+		title
+		subtitle
+		description
+		content
+		phrasechoc
+		video
+		image {
+			url
+			size: formats
+		}
+		tags {
+			id
+			title
+			image {
+				url
+				size: formats
+			}
+		}
+		technos {
+			title
+			id
+			slug
+			image {
+				url
+				size: formats
+			}
+		}
+	}
+}

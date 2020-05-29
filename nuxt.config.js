@@ -53,7 +53,8 @@ export default {
     },
     { src: '~plugins/ga.js', mode: 'client' },
     { src: '~/plugins/jsonld' },
-    { src: '~/plugins/eventBus' }
+    { src: '~/plugins/eventBus' },
+    { src: '~/plugins/prism', mode: 'client' }
   ],
   /*
    ** Nuxt.js dev-modules
@@ -144,8 +145,8 @@ export default {
     clientConfigs: {
       default: {
         // required
-        //httpEndpoint: 'https://fgrx-strapi.herokuapp.com/graphql'
-        httpEndpoint: 'http://localhost:1337/graphql'
+        httpEndpoint: 'https://fgrx-strapi.herokuapp.com/graphql'
+        //httpEndpoint: 'http://localhost:1337/graphql'
       }
     }
   }
