@@ -7,7 +7,12 @@
         <div class="description">{{ portfolio.description }}</div>
 
         <div class="links">
-          <v-btn v-if="portfolio.url" :href="portfolio.url" target="blank" color="primary">
+          <v-btn
+            v-if="portfolio.url"
+            :href="portfolio.url"
+            target="blank"
+            color="primary"
+          >
             <v-icon>mdi-link</v-icon>Voir en ligne
           </v-btn>
           <v-btn
@@ -27,17 +32,21 @@
               <div>
                 <v-img
                   :src="
-                      portfolio.image.size.medium
-                        ? portfolio.image.size.medium.url
-                        : portfolio.image.url
-                    "
+                    portfolio.image.size.medium
+                      ? portfolio.image.size.medium.url
+                      : portfolio.image.url
+                  "
                   :alt="'logo de l\'article ' + portfolio.title"
                   class="portfolio__imagePrincipale"
                   max-width="350"
                 ></v-img>
                 <div class="portfolio__techno_list">
                   <div v-for="techno in portfolio.technos" :key="techno.id">
-                    <ItemTechno :techno="techno" mode="link" class="item__techno" />
+                    <ItemTechno
+                      :techno="techno"
+                      mode="link"
+                      class="item__techno"
+                    />
                   </div>
                 </div>
               </div>
@@ -50,7 +59,9 @@
     <v-row>
       <v-col cols="12" sm="7">
         <div class="content" v-html="$md.render(portfolio.content)"></div>
-        <div class="phrasechoc" v-if="portfolio.phrasechoc">{{ portfolio.phrasechoc }}</div>
+        <div class="phrasechoc" v-if="portfolio.phrasechoc">
+          {{ portfolio.phrasechoc }}
+        </div>
       </v-col>
 
       <v-col cols="12" sm="5">
@@ -60,8 +71,8 @@
               <v-img
                 @click="openDialog(capture.url)"
                 :src="
-                    capture.size.medium ? capture.size.medium.url : capture.url
-                  "
+                  capture.size.medium ? capture.size.medium.url : capture.url
+                "
                 alt="Capture d'écran"
                 class="portfolio__capture"
                 max-width="350"
@@ -102,10 +113,66 @@ export default {
       update: (data) => data.portfolios[0]
     }
   },
+  computed: {
+    image() {
+      const imageDisplay =
+        typeof this.portfolio.image.size !== 'Object' &&
+        typeof this.portfolio.size == 'undefined'
+          ? this.portfolio.image.url
+          : this.portfolio.image.size.large.url
+
+      return imageDisplay
+    }
+  },
   methods: {
     openDialog(img) {
       this.dialog = true
       this.imgToOpen = img
+    }
+  },
+  head() {
+    return {
+      title:
+        'Portfolio Fabien Grignoux, développeur web : ' + this.portfolio.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Portfolio développement frontend & backend : Développement du projet' +
+            this.portfolio.description
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content:
+            'Portfolio Fabien Grignoux, développeur web : ' +
+            this.portfolio.title
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          content: process.env.siteUrl + '/portfolio/' + this.portfolio.slug
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content:
+            'Portfolio développement frontend & backend : Développement du projet' +
+            this.portfolio.description
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: `${this.image}`
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content:
+            'développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular,Javascript'
+        }
+      ]
     }
   }
 }

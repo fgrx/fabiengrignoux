@@ -6,7 +6,13 @@
 
         <v-col>
           <v-row>
-            <v-col col="12" xs="6" sm="4" v-for="portfolio in portfolios" :key="portfolio.id">
+            <v-col
+              col="12"
+              xs="6"
+              sm="4"
+              v-for="portfolio in portfolios"
+              :key="portfolio.id"
+            >
               <v-card>
                 <Portfolio :portfolio="portfolio" />
               </v-card>
@@ -37,6 +43,48 @@ export default {
       variables: {
         limit: 20
       }
+    }
+  },
+  head() {
+    return {
+      title:
+        'Portfolio de Fabien Grignoux, développeur front-end et back-end à Lyon',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Voici quelques projets front et back end utilisant mes technologies favorites : Javascript, Vue, Php & Symfony'
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content:
+            'Portfolio de Fabien Grignoux, développeur front-end et back-end à Lyon'
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          content: process.env.siteUrl + '/portfolio'
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content:
+            'Voici quelques projets front et back end utilisant mes technologies favorites : Javascript, Vue, Php & Symfony'
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: `${process.env.siteUrl}/ogimage.jpg`
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content:
+            'développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular,Javascript'
+        }
+      ]
     }
   }
 }

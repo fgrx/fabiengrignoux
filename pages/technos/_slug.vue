@@ -10,10 +10,11 @@
         <v-row class="techno__logo" align="center" justify="center">
           <v-img
             :src="
-                      typeof techno.image.size === 'Object' && typeof techno.image.size.medium === 'Object'
-                        ? techno.image.size.medium.url
-                        : techno.image.url
-                    "
+              typeof techno.image.size !== 'undefined' &&
+              typeof techno.image.size.medium === 'Object'
+                ? techno.image.size.medium.url
+                : techno.image.url
+            "
             :alt="'Projets ' + techno.title"
             class="techno__imagePrincipale"
             max-width="300"
@@ -26,7 +27,13 @@
     <p>{{ techno.description }}</p>
 
     <v-row>
-      <v-col col="12" xs="6" sm="4" v-for="portfolio in techno.portfolios" :key="portfolio.id">
+      <v-col
+        col="12"
+        xs="6"
+        sm="4"
+        v-for="portfolio in techno.portfolios"
+        :key="portfolio.id"
+      >
         <v-card>
           <Portfolio :portfolio="portfolio" />
         </v-card>
@@ -56,6 +63,49 @@ export default {
       },
       update: (data) => data.technos[0]
     }
+  },
+  head() {
+    return {
+      title: 'Fabien Grignoux - projets développés avec ' + this.techno.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'portfolio front-end & backend : Liste des projets réalisés avec' +
+            this.title
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content:
+            'Fabien Grignoux - projets développés avec ' + this.techno.title
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          content: process.env.siteUrl + '/technos/' + this.techno.slug
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content:
+            'portfolio front-end & backend : Liste des projets réalisés avec' +
+            this.techno.title
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: `${process.env.siteUrl}/ogimage.jpg`
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content:
+            'développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular,Javascript'
+        }
+      ]
+    }
   }
 }
 </script>
@@ -74,9 +124,6 @@ export default {
 }
 
 .techno__imagePrincipale {
-  -webkit-box-shadow: 4px 3px 35px -10px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 4px 3px 35px -10px rgba(0, 0, 0, 0.75);
-  box-shadow: 4px 3px 35px -10px rgba(0, 0, 0, 0.75);
   transform: rotate(-10deg) scale(1);
   transition-property: all ease-in-out;
   z-index: 2;

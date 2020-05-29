@@ -56,8 +56,44 @@ export default {
       return imageDisplay
     }
   },
-  mounted() {
-    //Prism.highlightAll()
+
+  head() {
+    return {
+      title: this.post.title + 'Fabien Grignoux, développeur web ',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.post.description
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: this.post.title + 'Fabien Grignoux, développeur web '
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          content: process.env.siteUrl + '/portfolio/' + this.post.slug
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: +this.post.description
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: `${this.image}`
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content:
+            'développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular,Javascript'
+        }
+      ]
+    }
   }
 }
 </script>
