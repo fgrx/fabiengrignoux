@@ -7,14 +7,19 @@ export default {
    */
   head: {
     titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    lang: 'fr',
+    htmlAttrs: {
+      lang: 'fr'
+    },
+    title: 'Fabien Grignoux, développeur web à Lyon',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content:
+          "J'accompagne les entreprises à développer les outils web dont elles ont besoin pour atteindre leurs objectifs."
       }
     ],
 
@@ -52,8 +57,8 @@ export default {
       mode: 'client'
     },
     { src: '~plugins/ga.js', mode: 'client' },
-    { src: '~/plugins/jsonld' },
-    { src: '~/plugins/eventBus' },
+    { src: '~/plugins/jsonld', mode: 'server' },
+    { src: '~/plugins/eventBus', mode: 'client' },
     { src: '~/plugins/prism', mode: 'client' }
   ],
   /*

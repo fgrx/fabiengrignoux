@@ -31,11 +31,7 @@
             <v-row align="center" justify="center">
               <div>
                 <v-img
-                  :src="
-                    portfolio.image.size.medium
-                      ? portfolio.image.size.medium.url
-                      : portfolio.image.url
-                  "
+                  :src="image"
                   :alt="'logo de l\'article ' + portfolio.title"
                   class="portfolio__imagePrincipale"
                   max-width="350"
@@ -91,6 +87,8 @@
 <script>
 import ItemTechno from '../../components/ItemTechno.vue'
 import portfolioQuery from '@/graphql/getPortfolio'
+import ApolloProvider from '@/providers/ApolloProvider'
+
 export default {
   components: {
     ItemTechno
@@ -98,21 +96,24 @@ export default {
 
   data() {
     return {
-      portfolios: [],
       imgToOpen: '',
       dialog: false
     }
   },
-  apollo: {
-    portfolio: {
+
+  async asyncData({ app, route }) {
+    const portfolios = await app.apolloProvider.defaultClient.query({
       query: portfolioQuery,
-      prefetch: true,
-      variables() {
-        return { slug: this.$route.params.slug }
-      },
-      update: (data) => data.portfolios[0]
+      variables: { slug: route.params.slug }
+    })
+
+    const portfolio = portfolios.data.portfolios[0]
+
+    return {
+      portfolio
     }
   },
+
   computed: {
     image() {
       const imageDisplay =

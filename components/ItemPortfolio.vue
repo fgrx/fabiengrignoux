@@ -5,7 +5,7 @@
       tile
       :to="{ name: 'portfolio-slug', params: { slug: portfolio.slug } }"
     >
-      <v-img :src="portfolio.image.url" class="portfolio__image">
+      <v-img :src="image" class="portfolio__image">
         <div class="portfolio__details">
           <div>
             <v-card-title>
@@ -38,7 +38,18 @@ import ItemTechno from './ItemTechno.vue'
 export default {
   components: { ItemTechno },
   props: ['portfolio'],
-  mounted() {}
+
+  computed: {
+    image() {
+      const imageDisplay =
+        typeof this.portfolio.image.size !== 'Object' &&
+        typeof this.portfolio.size == 'undefined'
+          ? this.portfolio.image.url
+          : this.portfolio.image.size.large.url
+
+      return imageDisplay
+    }
+  }
 }
 </script>
 

@@ -45,23 +45,23 @@
 <script>
 import Portfolio from '../../components/ItemPortfolio.vue'
 import technoQuery from '@/graphql/getTechno'
+import ApolloProvider from '@/providers/ApolloProvider'
 
 export default {
   components: {
     Portfolio
   },
-  data() {
-    return {
-      techno: {}
-    }
-  },
-  apollo: {
-    techno: {
+
+  async asyncData({ app, route }) {
+    const apolloQuery = await app.apolloProvider.defaultClient.query({
       query: technoQuery,
-      variables() {
-        return { slug: this.$route.params.slug }
-      },
-      update: (data) => data.technos[0]
+      variables: { slug: route.params.slug }
+    })
+
+    const techno = apolloQuery.data.technos[0]
+
+    return {
+      techno
     }
   },
   head() {

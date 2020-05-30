@@ -1,9 +1,15 @@
 <template>
   <div>
     <v-container>
-      <v-row justify="center">
-        <h1>Portfolio</h1>
-
+      <v-row>
+        <v-col cols="12" sm="9">
+          <h1>Portfolio</h1>
+          <p>
+            Après 15 années de développement web, je ne vais pas vous ennuyer
+            avec tous les projets que j'ai pu réaliser. Voici donc une sélection
+            d'une partie d'entre eux qui me tiennent à coeur aujourd'hui.
+          </p>
+        </v-col>
         <v-col>
           <v-row>
             <v-col
@@ -27,24 +33,26 @@
 <script>
 import Portfolio from '../../components/ItemPortfolio.vue'
 import porfoliosQuery from '@/graphql/allPortfolios'
+import ApolloProvider from '@/providers/ApolloProvider'
 
 export default {
   components: {
     Portfolio
   },
-  data() {
-    return {
-      portfolios: []
-    }
-  },
-  apollo: {
-    portfolios: {
+
+  async asyncData({ app, route }) {
+    const portfoliosQuery = await app.apolloProvider.defaultClient.query({
       query: porfoliosQuery,
-      variables: {
-        limit: 20
-      }
+      variables: { limit: 20 }
+    })
+
+    const portfolios = portfoliosQuery.data.portfolios
+
+    return {
+      portfolios
     }
   },
+
   head() {
     return {
       title:
@@ -90,4 +98,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+h1 {
+  margin-top: 1em;
+}
+</style>

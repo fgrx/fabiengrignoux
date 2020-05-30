@@ -27,21 +27,19 @@
 <script>
 import postQuery from '@/graphql/getPublication'
 import Prism from '~/plugins/prism'
-export default {
-  data() {
-    return {
-      post: {}
-    }
-  },
+import ApolloProvider from '@/providers/ApolloProvider'
 
-  apollo: {
-    post: {
+export default {
+  async asyncData({ app, route }) {
+    const apolloQuery = await app.apolloProvider.defaultClient.query({
       query: postQuery,
-      prefetch: true,
-      variables() {
-        return { slug: this.$route.params.slug }
-      },
-      update: (data) => data.articles[0]
+      variables: { slug: route.params.slug }
+    })
+
+    const post = apolloQuery.data.articles[0]
+
+    return {
+      post
     }
   },
 
@@ -59,7 +57,7 @@ export default {
 
   head() {
     return {
-      title: this.post.title + 'Fabien Grignoux, développeur web ',
+      title: this.post.title + ' - Fabien Grignoux, développeur web ',
       meta: [
         {
           hid: 'description',
