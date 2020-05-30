@@ -47,8 +47,6 @@ const buildRoutes = async () => {
     routes.push(route)
   })
 
-  console.log('routes >>>', routes)
-
   return routes
 }
 
@@ -198,7 +196,7 @@ export default {
   },
 
   generate: {
-    routes: buildRoutes()
+    routes: buildRoutes
   },
   pwa: {
     icon: {
