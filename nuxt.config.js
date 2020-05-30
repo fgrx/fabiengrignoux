@@ -207,7 +207,7 @@ export default {
   sitemap: {
     hostname: 'https://developpeurfullstack.fr',
     gzip: true,
-    routes: buildRoutes()
+    routes: buildRoutes
   },
 
   apollo: {
