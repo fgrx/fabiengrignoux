@@ -1,6 +1,11 @@
 <template>
   <div>
-    <v-dialog v-model="dialogContact" max-width="600" max-height="600" overlay-color="white">
+    <v-dialog
+      v-model="dialogContact"
+      max-width="600"
+      max-height="600"
+      overlay-color="white"
+    >
       <v-card>
         <v-card-title class="headline">
           <span v-if="!isDevis">Contactez moi</span>
@@ -16,11 +21,23 @@
             v-on:submit.prevent="sendMessage"
           >
             <p>
-              <v-text-field label="Votre nom" v-model="nom" required type="text" name="nom"></v-text-field>
+              <v-text-field
+                label="Votre nom"
+                v-model="nom"
+                required
+                type="text"
+                name="nom"
+              ></v-text-field>
             </p>
 
             <p>
-              <v-text-field label="Votre email" v-model="email" required type="email" name="email"></v-text-field>
+              <v-text-field
+                label="Votre email"
+                v-model="email"
+                required
+                type="email"
+                name="email"
+              ></v-text-field>
             </p>
 
             <p>
@@ -95,10 +112,10 @@ export default {
     }
   },
   created() {
-    this.$bus.$on('openContact', (data) => {
+    this.$nuxt.$on('openContact', (data) => {
       this.openDialog()
     })
-    this.$bus.$on('openDevis', (data) => {
+    this.$nuxt.$on('openDevis', (data) => {
       this.openDevis()
     })
   },
@@ -161,5 +178,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

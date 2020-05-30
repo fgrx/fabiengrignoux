@@ -124,10 +124,10 @@ export default {
 
   methods: {
     openDialog() {
-      this.$bus.$emit('openContact', true)
+      $nuxt.$emit('openContact', true)
     },
     openDevis() {
-      this.$bus.$emit('openDevis', true)
+      $nuxt.$emit('openDevis', true)
     }
   },
 
