@@ -87,7 +87,6 @@
 <script>
 import ItemTechno from '../../components/ItemTechno.vue'
 import portfolioQuery from '@/graphql/getPortfolio'
-import ApolloProvider from '@/providers/ApolloProvider'
 
 export default {
   components: {

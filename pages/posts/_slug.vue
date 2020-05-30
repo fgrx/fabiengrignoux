@@ -27,7 +27,6 @@
 <script>
 import postQuery from '@/graphql/getPublication'
 import Prism from '~/plugins/prism'
-import ApolloProvider from '@/providers/ApolloProvider'
 
 export default {
   async asyncData({ app, route }) {

@@ -14,7 +14,6 @@
 <script>
 import ItemPost from '../../components/ItemPost.vue'
 import postsQuery from '@/graphql/allPublications'
-import ApolloProvider from '@/providers/ApolloProvider'
 
 export default {
   components: {

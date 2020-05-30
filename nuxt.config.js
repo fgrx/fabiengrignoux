@@ -1,4 +1,56 @@
 import colors from 'vuetify/es5/util/colors'
+const { createApolloFetch } = require('apollo-fetch')
+
+const buildRoutes = async () => {
+  const routes = []
+  const uri = 'https://fgrx-strapi.herokuapp.com/graphql'
+  const apolloFetch = createApolloFetch({ uri })
+  const queryPortfolio = `
+  query Porfolios {
+    portfolios {
+      slug 
+    }
+  }
+      `
+
+  const resultPortfolios = await apolloFetch({ query: queryPortfolio }) // all apolloFetch arguments are optional
+  resultPortfolios.data.portfolios.forEach((portfolio) => {
+    const route = `/portfolio/${portfolio.slug}`
+    routes.push(route)
+  })
+
+  const queryPosts = `
+  query Posts {
+    articles {
+      slug 
+    }
+  }
+      `
+
+  const resultPosts = await apolloFetch({ query: queryPosts }) // all apolloFetch arguments are optional
+  resultPosts.data.articles.forEach((post) => {
+    const route = `/posts/${post.slug}`
+    routes.push(route)
+  })
+
+  const queryTechnos = `
+  query Technos {
+    technos {
+      slug 
+    }
+  }
+      `
+
+  const resultTechnos = await apolloFetch({ query: queryTechnos }) // all apolloFetch arguments are optional
+  resultTechnos.data.technos.forEach((techno) => {
+    const route = `/technos/${techno.slug}`
+    routes.push(route)
+  })
+
+  console.log('routes >>>', routes)
+
+  return routes
+}
 
 export default {
   mode: 'universal',
@@ -143,6 +195,21 @@ export default {
     },
 
     extend(config, ctx) {}
+  },
+
+  generate: {
+    routes: buildRoutes()
+  },
+  pwa: {
+    icon: {
+      /* icon options */
+    }
+  },
+
+  sitemap: {
+    hostname: 'https://developpeurfullstack.fr',
+    gzip: true,
+    routes: buildRoutes()
   },
 
   apollo: {

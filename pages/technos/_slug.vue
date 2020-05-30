@@ -45,7 +45,6 @@
 <script>
 import Portfolio from '../../components/ItemPortfolio.vue'
 import technoQuery from '@/graphql/getTechno'
-import ApolloProvider from '@/providers/ApolloProvider'
 
 export default {
   components: {

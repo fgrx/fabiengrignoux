@@ -33,7 +33,6 @@
 <script>
 import Portfolio from '../../components/ItemPortfolio.vue'
 import porfoliosQuery from '@/graphql/allPortfolios'
-import ApolloProvider from '@/providers/ApolloProvider'
 
 export default {
   components: {
