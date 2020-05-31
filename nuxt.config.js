@@ -109,12 +109,21 @@ export default {
     { src: '~plugins/ga.js', mode: 'client' },
     { src: '~/plugins/jsonld', mode: 'server' },
     { src: '~/plugins/eventBus', mode: 'client' },
-    { src: '~/plugins/prism', mode: 'client' }
+    { src: '~/plugins/prism', mode: 'server' }
   ],
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify'],
+  buildModules: [
+    '@nuxt/typescript-build',
+    '@nuxtjs/vuetify',
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: 'UA-141104841-1'
+      }
+    ]
+  ],
   /*
    ** Nuxt.js modules
    */
@@ -123,6 +132,7 @@ export default {
     '@nuxtjs/apollo',
     '@nuxtjs/markdownit',
     '@nuxtjs/axios',
+    '@nuxtjs/sitemap',
     [
       'nuxt-fontawesome',
       {

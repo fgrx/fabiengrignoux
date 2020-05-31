@@ -1410,6 +1410,13 @@
     consola "^2.11.3"
     eslint-loader "^4.0.2"
 
+"@nuxtjs/google-analytics@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/google-analytics/-/google-analytics-2.3.0.tgz#d4c900e4bc5b91b23da33e5764d6a9a6236d78fd"
+  integrity sha512-TBRWCZJJBywNU4Sxbe03w5uy76O9JiOJz5ZgFDAmU06IUhwMELWOoQFWTqgROmvhqzoZrXMPR5JiaEnvaCRuDA==
+  dependencies:
+    vue-analytics "^5.22.1"
+
 "@nuxtjs/markdownit-loader@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@nuxtjs/markdownit-loader/-/markdownit-loader-1.1.1.tgz#7223b49064a176394f6f82aad3bf622069004799"
@@ -6276,11 +6283,6 @@ get-caller-file@^2.0.1:
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
   integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
 
-get-package-name@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/get-package-name/-/get-package-name-1.1.0.tgz#06a7c6e2b8bfcb84dc3abbfc2f92bf59bb2a1d66"
-  integrity sha512-lwMnhvJ8lYNegh1306J9GTrXk8/5D2CTKK9bZ+bK0N1MN9i9hMZWe9B37LNMs531HdKjobHLRCWIS6vCl4Z46A==
-
 get-stdin@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-4.0.1.tgz#b968c6b0a04384324902e8bf1a5df32579a450fe"
@@ -9126,14 +9128,6 @@ nuxt-jsonld@^1.4.9:
   version "1.4.9"
   resolved "https://registry.yarnpkg.com/nuxt-jsonld/-/nuxt-jsonld-1.4.9.tgz#6e99b816f8f979c23a92aaf7858a19d7a2777a20"
   integrity sha512-vQiVm9XH+g1uyeECQJiu4dFyjCB50n2qqS7DMFsY6whHW2iIl4y6kGqvqkDUg5/c3dy4aZT03nZYO00gAHaA4A==
-
-nuxt-sitemap@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/nuxt-sitemap/-/nuxt-sitemap-1.0.0.tgz#e5851779d9acacb2accb305a5a184d9a524c424c"
-  integrity sha512-iRFWsw/od2Hol+UYstR9oHlvMrOgqBYvYTSemtpJMymd/jZQj2MCaBv+GfLT5/f+FhO+v/GJllliex7Xbibu4g==
-  dependencies:
-    "@nuxtjs/sitemap" "^2.3.0"
-    get-package-name "^1.1.0"
 
 nuxt@^2.0.0:
   version "2.12.2"
@@ -12727,6 +12721,11 @@ vscode-uri@^1.0.6:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-1.0.8.tgz#9769aaececae4026fb6e22359cb38946580ded59"
   integrity sha512-obtSWTlbJ+a+TFRYGaUumtVwb+InIUVI0Lu0VBUAPmj2cU5JutEXg3xUE0c2J5Tcy7h2DEKVJBFi+Y9ZSFzzPQ==
+
+vue-analytics@^5.22.1:
+  version "5.22.1"
+  resolved "https://registry.yarnpkg.com/vue-analytics/-/vue-analytics-5.22.1.tgz#9d6b32da56daee1b9dfb23a267b50349a03f710f"
+  integrity sha512-HPKQMN7gfcUqS5SxoO0VxqLRRSPkG1H1FqglsHccz6BatBatNtm/Vyy8brApktZxNCfnAkrSVDpxg3/FNDeOgQ==
 
 vue-apollo@^3.0.3:
   version "3.0.3"
