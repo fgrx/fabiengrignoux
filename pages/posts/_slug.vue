@@ -17,7 +17,7 @@
             <div class="phrasechoc">{{ post.phrasechoc }}</div>
             <div class="video" v-if="post.video">{{ post.video }}</div>
 
-            <div class="content" v-html="$md.render(post.content)"></div>
+            <div class="content" v-html="contentCalcul" v-highlight></div>
           </v-col>
         </v-row>
       </article>
@@ -51,6 +51,9 @@ export default {
           : this.post.image.size.large.url
 
       return imageDisplay
+    },
+    contentCalcul() {
+      return this.$md.render(this.post.content)
     }
   },
 
@@ -91,8 +94,7 @@ export default {
         }
       ]
     }
-  },
-  mounted() {}
+  }
 }
 </script>
 

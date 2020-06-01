@@ -146,6 +146,27 @@ export default {
 }
 </script>
 
+
+<style lang="scss">
+pre{
+  padding:1em;
+  background:rgb(39, 39, 39) !important;
+  color:white;
+  margin-bottom:2em;
+}
+
+.v-application code {
+  all: unset;
+  background: rgb(39, 39, 39) !important;
+  width: 100% !important;
+}
+
+.v-application code.code--custom {
+  all: unset;
+  color: #eee;
+}
+</style>
+
 <style lang="scss" scoped>
 .v-btn{
    text-transform:none !important;
@@ -154,4 +175,6 @@ export default {
 .v-btn--active{
 background:none;
 }
+
+
 </style>
