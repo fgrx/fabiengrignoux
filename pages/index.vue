@@ -50,7 +50,7 @@
         <v-row>
           <v-col v-for="service in premierePage.services" :key="service.id">
             <div class="espace__logo">
-              <img class="illustration" :src="require('@/assets/' + service.svg)" alt />
+              <img class="illustration" :src="require('@/assets/img/' + service.svg)" alt />
             </div>
             <h3>{{ service.title }}</h3>
             <p>{{ service.content }}</p>

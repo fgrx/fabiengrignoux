@@ -16,6 +16,7 @@
             <div class="resume">{{ post.description }}</div>
             <div class="phrasechoc">{{ post.phrasechoc }}</div>
             <div class="video" v-if="post.video">{{ post.video }}</div>
+
             <div class="content" v-html="$md.render(post.content)"></div>
           </v-col>
         </v-row>
@@ -26,7 +27,6 @@
 
 <script>
 import postQuery from '@/graphql/getPublication'
-import Prism from '~/plugins/prism'
 
 export default {
   async asyncData({ app, route }) {
@@ -91,7 +91,8 @@ export default {
         }
       ]
     }
-  }
+  },
+  mounted() {}
 }
 </script>
 
