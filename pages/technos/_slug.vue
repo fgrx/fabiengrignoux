@@ -1,12 +1,7 @@
 <template>
   <v-container>
     <v-row align="center" justify="center" class="flex-sm-row-reverse">
-      <v-col cols="12" xs="12" sm="5">
-        <h1 v-if="techno.title">{{ techno.title }}</h1>
-
-        <div class="description">{{ techno.description }}</div>
-      </v-col>
-      <v-col cols="12" xs="12" sm="6" class="techno__top">
+      <v-col cols="12" xs="12" sm="5" class="techno__top">
         <v-row class="techno__logo" align="center" justify="center">
           <v-img
             :src="
@@ -21,19 +16,17 @@
           ></v-img>
         </v-row>
       </v-col>
+      <v-col cols="12" xs="12" sm="7">
+        <h1 v-if="techno.title">{{ techno.title }}</h1>
+
+        <div class="description" v-html="$md.render(techno.description)"></div>
+      </v-col>
     </v-row>
 
     <h2>Projets {{ techno.title }}</h2>
-    <p>{{ techno.description }}</p>
 
     <v-row>
-      <v-col
-        col="12"
-        xs="6"
-        sm="4"
-        v-for="portfolio in techno.portfolios"
-        :key="portfolio.id"
-      >
+      <v-col col="12" xs="6" sm="4" v-for="portfolio in techno.portfolios" :key="portfolio.id">
         <v-card>
           <Portfolio :portfolio="portfolio" />
         </v-card>
@@ -130,5 +123,9 @@ export default {
   &:hover {
     transform: rotate(0deg) scale(1.4);
   }
+}
+
+.description {
+  font-size: 1.1em;
 }
 </style>

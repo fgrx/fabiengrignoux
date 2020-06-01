@@ -1,7 +1,14 @@
 <template>
   <v-app dark>
-    <v-app-bar color="transparent" light flat dense class="app-bar" fixed>
+ 
+
+    <v-app-bar color="transparent" flat fixed >
+      
+
+       <!-- <v-toolbar-title><v-btn :to="{name:'index'}" text input-value="transparent">Fabien Grignoux - dev web</v-btn></v-toolbar-title> -->
       <v-spacer />
+
+
 
       <div class="d-none d-lg-block">
         <v-btn v-for="(item, i) in items" :key="i" :to="item.to" router exact text color="#091584">
@@ -9,11 +16,14 @@
           {{ item.title }}
         </v-btn>
       </div>
-
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer" class="d-lg-none">
+     <v-btn icon @click.stop="rightDrawer = !rightDrawer" class="d-lg-none">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
+
+
     </v-app-bar>
+
+
     <v-content>
       <v-container class="pa-0 ma-0" fluid>
         <nuxt />
@@ -96,7 +106,7 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
-
+   
       items: [
         {
           icon: 'mdi-home',
@@ -135,3 +145,13 @@ export default {
  
 }
 </script>
+
+<style lang="scss" scoped>
+.v-btn{
+   text-transform:none !important;
+}
+
+.v-btn--active{
+background:none;
+}
+</style>
