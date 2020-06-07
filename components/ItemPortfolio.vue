@@ -1,10 +1,6 @@
 <template>
   <div class="portfolio__item">
-    <v-card
-      flat
-      tile
-      :to="{ name: 'portfolio-slug', params: { slug: portfolio.slug } }"
-    >
+    <v-card flat tile :to="{ name: 'portfolio-slug', params: { slug: portfolio.slug } }">
       <v-img :src="image" class="portfolio__image">
         <div class="portfolio__details">
           <div>
@@ -13,11 +9,7 @@
             </v-card-title>
 
             <div class="portfolio__techno_list">
-              <div
-                v-for="techno in portfolio.technos"
-                :key="techno.id"
-                class="item-techno"
-              >
+              <div v-for="techno in portfolio.technos" :key="techno.id" class="item-techno">
                 <ItemTechno :techno="techno" class="item__techno" />
               </div>
             </div>
@@ -41,11 +33,7 @@ export default {
 
   computed: {
     image() {
-      const imageDisplay =
-        typeof this.portfolio.image.size !== 'Object' &&
-        typeof this.portfolio.size == 'undefined'
-          ? this.portfolio.image.url
-          : this.portfolio.image.size.large.url
+      const imageDisplay = this.portfolio.image.size.thumbnail.url
 
       return imageDisplay
     }
