@@ -1,18 +1,13 @@
 <template>
   <v-container>
     <v-row align="center" justify="center" class="flex-sm-row-reverse">
-      <v-col cols="12" xs="12" sm="5">
+      <v-col cols="12" xs="12" sm="5" md="7" xl="9">
         <h1 v-if="portfolio.title">{{ portfolio.title }}</h1>
 
         <div class="description">{{ portfolio.description }}</div>
 
         <div class="links">
-          <v-btn
-            v-if="portfolio.url"
-            :href="portfolio.url"
-            target="blank"
-            color="primary"
-          >
+          <v-btn v-if="portfolio.url" :href="portfolio.url" target="blank" color="primary">
             <v-icon>mdi-link</v-icon>Voir en ligne
           </v-btn>
           <v-btn
@@ -25,7 +20,7 @@
           </v-btn>
         </div>
       </v-col>
-      <v-col cols="12" xs="12" sm="6">
+      <v-col cols="12" xs="12" sm="7" md="5" xl="3">
         <div class="portfolio__top">
           <div class="portfolio__container__row">
             <v-row align="center" justify="center">
@@ -38,11 +33,7 @@
                 ></v-img>
                 <div class="portfolio__techno_list">
                   <div v-for="techno in portfolio.technos" :key="techno.id">
-                    <ItemTechno
-                      :techno="techno"
-                      mode="link"
-                      class="item__techno"
-                    />
+                    <ItemTechno :techno="techno" mode="link" class="item__techno" />
                   </div>
                 </div>
               </div>
@@ -55,9 +46,7 @@
     <v-row>
       <v-col cols="12" sm="7">
         <div class="content" v-html="$md.render(portfolio.content)"></div>
-        <div class="phrasechoc" v-if="portfolio.phrasechoc">
-          {{ portfolio.phrasechoc }}
-        </div>
+        <div class="phrasechoc" v-if="portfolio.phrasechoc">{{ portfolio.phrasechoc }}</div>
       </v-col>
 
       <v-col cols="12" sm="5">

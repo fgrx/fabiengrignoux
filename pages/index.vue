@@ -12,20 +12,10 @@
                 v-html="$md.render(premierePage.headsite)"
               ></div>
               <div id="contact__buttons">
-                <v-btn
-                  color="accent"
-                  @click="contactAction"
-                  width="230"
-                  class="button__header"
-                >
+                <v-btn color="accent" @click="contactAction" width="230" class="button__header">
                   <v-icon>mdi-email-edit</v-icon>Me contacter
                 </v-btn>
-                <v-btn
-                  @click="getDevisAction"
-                  color="secondary"
-                  width="230"
-                  class="button__header"
-                >
+                <v-btn @click="getDevisAction" color="secondary" width="230" class="button__header">
                   <v-icon>mdi-file-document-edit-outline</v-icon>Demander un
                   devis
                 </v-btn>
@@ -60,11 +50,7 @@
         <v-row>
           <v-col v-for="service in premierePage.services" :key="service.id">
             <div class="espace__logo">
-              <img
-                class="illustration"
-                :src="require('@/assets/img/' + service.svg)"
-                alt
-              />
+              <img class="illustration" :src="require('@/assets/img/' + service.svg)" alt />
             </div>
             <h3>{{ service.title }}</h3>
             <p>{{ service.content }}</p>
@@ -72,6 +58,19 @@
         </v-row>
       </v-container>
     </section>
+
+    <section>
+      <div class="container__mes__clients">
+        <v-container>
+          <h2>Mes clients</h2>
+          <p>J'ai travaillé aussi bien avec des institutions que des indépendants.</p>
+          <v-row>
+            <v-col></v-col>
+          </v-row>
+        </v-container>
+      </div>
+    </section>
+
     <section>
       <div class="container__index portfolio__home">
         <v-container>
@@ -91,9 +90,7 @@
           </v-row>
           <v-container>
             <v-row justify="center">
-              <v-btn to="./portfolio" color="secondary"
-                >Voir plus de projets</v-btn
-              >
+              <v-btn to="./portfolio" color="secondary">Voir plus de projets</v-btn>
             </v-row>
           </v-container>
         </v-container>
@@ -113,12 +110,7 @@
           <v-col cols="12" sm="5">
             <h3>Mes technos front-end</h3>
             <v-row>
-              <v-col
-                cols="6"
-                sm="4"
-                v-for="techno in technosfront"
-                :key="techno.id"
-              >
+              <v-col cols="6" sm="4" v-for="techno in technosfront" :key="techno.id">
                 <ItemTechno :techno="techno" mode="link" class="item__techno" />
               </v-col>
             </v-row>
@@ -126,12 +118,7 @@
           <v-col cols="12" offset-md="2" sm="5" class="technos__block">
             <h3>Mes technos back-end</h3>
             <v-row>
-              <v-col
-                cols="6"
-                sm="4"
-                v-for="techno in technosback"
-                :key="techno.id"
-              >
+              <v-col cols="6" sm="4" v-for="techno in technosback" :key="techno.id">
                 <ItemTechno :techno="techno" mode="link" class="item__techno" />
               </v-col>
             </v-row>

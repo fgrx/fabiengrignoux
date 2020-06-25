@@ -24,13 +24,13 @@
     </v-app-bar>
 
 
-    <v-content>
+    <v-main>
       <v-container class="pa-0 ma-0" fluid>
         <nuxt />
       </v-container>
       <ContactForm />
 
-    </v-content>
+    </v-main>
     <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed color="primary" dark>
       <v-list>
         <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
