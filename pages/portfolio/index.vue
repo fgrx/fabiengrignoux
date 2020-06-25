@@ -2,7 +2,7 @@
   <div>
     <v-container>
       <v-row>
-        <v-col cols="12" sm="9">
+        <v-col cols="12" sm="12">
           <h1>Portfolio</h1>
           <p>
             Après 15 années de développement web, je ne vais pas vous ennuyer
@@ -13,7 +13,7 @@
         <v-col>
           <v-row>
             <v-col
-              col="12"
+              cols="12"
               xs="6"
               sm="4"
               v-for="portfolio in portfolios"

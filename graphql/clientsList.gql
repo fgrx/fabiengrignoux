@@ -1,0 +1,12 @@
+query Clients($limit: Int) {
+  clients(sort: "order:asc", limit: $limit) {
+    id
+    title
+    subtitle
+    description
+    image {
+      url
+      size
+    }
+  }
+}
