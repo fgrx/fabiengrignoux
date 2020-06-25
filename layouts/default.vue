@@ -12,12 +12,12 @@
 
       <div class="d-none d-lg-block">
         <v-btn v-for="(item, i) in items" :key="i" :to="item.to" router exact text color="#091584">
-          <v-icon>{{ item.icon }}</v-icon>
+          <i class="material-icons">{{ item.icon }}</i>
           {{ item.title }}
         </v-btn>
       </div>
      <v-btn icon @click.stop="rightDrawer = !rightDrawer" class="d-lg-none">
-        <v-icon>mdi-menu</v-icon>
+        <i class="material-icons">menu</i>
       </v-btn>
 
 
@@ -56,12 +56,12 @@
 
               <p>
                 <v-btn href="mailto:fabien.grignoux@outlook.com" color="secondary" text>
-                  <v-icon>mdi-email</v-icon>fabien.grignoux@outlook.com
+                  <i class="material-icons">email</i> fabien.grignoux@outlook.com
                 </v-btn>
               </p>
                             <p>
                 <v-btn href="tel:+33624867169" color="secondary" text>
-                  <v-icon>mdi-phone</v-icon>06.24.86.71.69
+                 <i class="material-icons">phone</i> 06.24.86.71.69
                 </v-btn>
               </p>
                             <p>
@@ -70,19 +70,19 @@
                   color="secondary"
                   text
                 >
-                  <v-icon>mdi-linkedin</v-icon>LinkedIn
+                  <i class="material-icons">face</i> LinkedIn
                 </v-btn>
               </p>
             </v-col>
             <v-col>
               <p>
                 <v-btn @click="openDialog" color="accent" width="230" class="button__header">
-                  <v-icon>mdi-email-edit</v-icon>Me contacter
+                  <i class="material-icons">email</i> Me contacter
                 </v-btn>
               </p>
               <p>
                 <v-btn @click="openDevis" color="secondary" width="230" class="button__header">
-                  <v-icon>mdi-file-document-edit-outline</v-icon>Demander un devis
+                <i class="material-icons">description</i> Demander un devis
                 </v-btn>
               </p>
             </v-col>
@@ -109,17 +109,17 @@ export default {
    
       items: [
         {
-          icon: 'mdi-home',
+          icon: 'home',
           title: 'Accueil',
           to: '/'
         },
         {
-          icon: 'mdi-apps',
+          icon: 'apps',
           title: 'Portfolio',
           to: '/portfolio'
         },
         {
-          icon: 'mdi-book-open-page-variant ',
+          icon: 'book',
           title: 'Publications',
           to: '/posts'
         }

@@ -75,14 +75,18 @@ export default {
     ],
 
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
 
-      {
-        rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css2?family=Nunito&family=Raleway&display=swap'
-      }
+      // {
+      // 	rel: 'stylesheet',
+      // 	href: 'https://fonts.googleapis.com/css2?family=Nunito&family=Raleway&display=swap'
+      // }
     ]
+  },
+  webfontloader: {
+    google: {
+      families: ['Nunito', 'Raleway'] //Loads Lato font with weights 400 and 700
+    }
   },
   env: {
     siteUrl: 'https://developpeurfullstack.fr',
@@ -133,22 +137,25 @@ export default {
     '@nuxtjs/apollo',
     '@nuxtjs/markdownit',
     '@nuxtjs/axios',
-    '@nuxtjs/sitemap',
-    [
-      'nuxt-fontawesome',
-      {
-        imports: [
-          {
-            set: '@fortawesome/free-solid-svg-icons',
-            icons: ['fas']
-          },
-          {
-            set: '@fortawesome/free-brands-svg-icons',
-            icons: ['fab']
-          }
-        ]
-      }
-    ]
+    'nuxt-webfontloader',
+    'nuxt-material-design-icons',
+    '@nuxtjs/sitemap'
+
+    // [
+    // 	'nuxt-fontawesome',
+    // 	{
+    // 		imports: [
+    // 			{
+    // 				set: '@fortawesome/free-solid-svg-icons',
+    // 				icons: [ 'fas' ]
+    // 			},
+    // 			{
+    // 				set: '@fortawesome/free-brands-svg-icons',
+    // 				icons: [ 'fab' ]
+    // 			}
+    // 		]
+    // 	}
+    // ]
   ],
   markdownit: {
     preset: 'default',
@@ -179,7 +186,8 @@ export default {
           //topBar: '#a92686'
         }
       }
-    }
+    },
+    defaultAssets: false
   },
   /*
    ** Build configuration

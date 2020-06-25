@@ -18,7 +18,8 @@
                   width="230"
                   class="button__header"
                 >
-                  <v-icon>mdi-email-edit</v-icon>Me contacter
+                  <i class="material-icons">email</i>
+                  Me contacter
                 </v-btn>
                 <v-btn
                   @click="getDevisAction"
@@ -26,8 +27,8 @@
                   width="230"
                   class="button__header"
                 >
-                  <v-icon>mdi-file-document-edit-outline</v-icon>Demander un
-                  devis
+                  <i class="material-icons">description</i>
+                  Demander un devis
                 </v-btn>
               </div>
             </v-col>
