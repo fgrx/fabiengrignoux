@@ -155,18 +155,22 @@ import technosListQuery from '@/graphql/technosList'
 
 import Portfolio from '../components/ItemPortfolio.vue'
 import Forme from '../components/Forme.vue'
-//import AnimationFabien from '@/components/AnimationFabien'
-import AnimationFabien2 from '@/components/AnimationFabien2.vue'
-
-const AnimationFabien = () => ({
-  component: import('@/components/AnimationFabien.vue'),
-  timeout: 3000
-})
+import Loading from '@/components/Loading'
 
 export default {
   components: {
-    AnimationFabien,
-    AnimationFabien2,
+    AnimationFabien: () => ({
+      component: import('@/components/AnimationFabien'),
+      loading: Loading,
+      delay: 10,
+      timeout: 6000
+    }),
+    AnimationFabien2: () => ({
+      component: import('@/components/AnimationFabien2'),
+      loading: Loading,
+      delay: 10,
+      timeout: 6000
+    }),
     Forme,
     Portfolio,
     PresentationPremPage,
