@@ -175,7 +175,7 @@ export default {
 			themes: {
 				light: {
 					primary: '#1d976c',
-					accent: 'red',
+					accent: '#000080',
 					secondary: '#50389a',
 					info: colors.teal.lighten1,
 					warning: colors.amber.base,

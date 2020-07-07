@@ -1,3 +1,17 @@
+.content__home {
+	background-image: url('~@/assets/formebackground.svg');
+	background-position: top right;
+
+	@media screen and (max-width: 1100px) {
+		background-position: top 30%;
+	}
+
+	@media screen and (max-width: 640px) {
+		background-position-y: top;
+		background-position-x: 85%;
+	}
+}
+
 .centered {
 	text-align: center;
 }
@@ -114,8 +128,7 @@ h3 {
 	}
 	p {
 		font-family: 'Nunito', sans-serif;
-		color: #1c1492a6;
-		// font-style: italic;
+		color: #1c1492a6; // font-style: italic;
 		line-height: 0em;
 		margin: 0;
 		padding: 0;
