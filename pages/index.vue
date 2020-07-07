@@ -12,11 +12,23 @@
                 v-html="$md.render(premierePage.headsite)"
               ></div>
               <div id="contact__buttons">
-                <v-btn color="accent" @click="contactAction" width="230" class="button__header">
+                <v-btn
+                  color="#000080"
+                  dark
+                  @click="contactAction"
+                  width="230"
+                  class="button__header"
+                >
                   <i class="material-icons">email</i>
                   Me contacter
                 </v-btn>
-                <v-btn @click="getDevisAction" color="secondary" width="230" class="button__header">
+                <v-btn
+                  @click="getDevisAction"
+                  dark
+                  color="#50389a"
+                  width="230"
+                  class="button__header"
+                >
                   <i class="material-icons">description</i>
                   Demander un devis
                 </v-btn>
