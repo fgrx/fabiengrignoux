@@ -64,9 +64,9 @@
 
         <v-row v-view.once="viewHandlerServices">
           <v-col v-for="(service, index) in premierePage.services" :key="index">
-            <div :class="'espace__logo__' + index">
+            <div :class="'espace__logo espace__logo__' + index">
               <img
-                class="illustration"
+                :class="'illustration__service illustration__service__' + index"
                 :src="require('@/assets/img/' + service.svg)"
                 alt
               />
@@ -298,9 +298,9 @@ export default {
   },
   mounted() {
     this.presentation = this.premierePage.presentation
-    gsap.from('.animationFabien1', {
-      y: 100,
-      opacity: 0,
+    gsap.to('.animationFabien1', {
+      y: -100,
+      opacity: 1,
       duration: 2,
       ease: 'back'
     })
@@ -315,9 +315,9 @@ export default {
     viewHandlerServices() {
       let tl = gsap.timeline({ repeat: 0 })
       for (let i = 0; this.premierePage.services.length > i; i++) {
-        tl.from(
-          '.espace__logo__' + i,
-          { y: -50, opacity: 0, duration: 1 },
+        tl.to(
+          '.illustration__service__' + i,
+          { y: 50, opacity: 1, duration: 1 },
           '<.3'
         )
       }
@@ -327,20 +327,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.animationFabien1 {
+  opacity: 0;
+  margin-top: 100px;
+}
+
+.illustration__service {
+  opacity: 0;
+  margin-top: -50px;
+  max-width: 200px;
+}
+
+.espace__logo {
+  min-height: 160px;
+}
+
 .container__index {
   margin-bottom: 2em;
 }
 
 .services__box {
   margin-top: 1.7em;
-}
-
-.illustration {
-  max-width: 200px;
-}
-
-.espace__logo {
-  min-height: 160px;
 }
 
 .portfolio__home {
@@ -367,7 +374,7 @@ export default {
 h2 {
   font-family: 'Raleway', sans-serif;
   padding: 1em 0 0.5em 0;
-  font-size: 3em;
+  font-size: 2.8em;
   &.homepage {
     font-size: 2em !important;
   }
