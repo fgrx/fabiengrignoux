@@ -7179,6 +7179,11 @@ growly@^1.3.0:
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
 
+gsap@^3.3.4:
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.3.4.tgz#759b9ecba1d21ad243f0d09900f29c4773b8cb32"
+  integrity sha512-qqrPsuh1eNN+Qtvux8f+UExXtd5N+TFhqyPlUX5PBwwDdig9CUxi50dYzUpSKkOczOmmiLMBiwoywPok1iOlDw==
+
 gzip-size@^5.0.0:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-5.1.1.tgz#cb9bee692f87c0612b232840a873904e4c135274"
@@ -13995,6 +14000,11 @@ vue-apollo@^3.0.3:
     chalk "^2.4.2"
     serialize-javascript "^2.1.0"
     throttle-debounce "^2.1.0"
+
+vue-check-view@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/vue-check-view/-/vue-check-view-0.3.0.tgz#813509a73916dd99483eaa4b1b24ca189c50ca7b"
+  integrity sha512-2IR2m4MCgOG/9UQaIn7cvvqbDcvUmPavun8nBMieRxGbhqvlUorjLIwJqvuFXruBO73HXXbCcrVKxnGr4ub5ag==
 
 vue-cli-plugin-apollo@^0.21.3:
   version "0.21.3"

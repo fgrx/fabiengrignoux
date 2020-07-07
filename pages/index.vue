@@ -35,7 +35,9 @@
               </div>
             </v-col>
             <v-col cols="12" sm="6">
-              <AnimationFabien />
+              <div class="animationFabien1">
+                <AnimationFabien />
+              </div>
             </v-col>
           </v-row>
         </v-container>
@@ -60,10 +62,14 @@
       <v-container class="container__index centered services__box">
         <h2>En quoi puis-je vous aider ?</h2>
 
-        <v-row>
-          <v-col v-for="service in premierePage.services" :key="service.id">
-            <div class="espace__logo">
-              <img class="illustration" :src="require('@/assets/img/' + service.svg)" alt />
+        <v-row v-view.once="viewHandlerServices">
+          <v-col v-for="(service, index) in premierePage.services" :key="index">
+            <div :class="'espace__logo__' + index">
+              <img
+                class="illustration"
+                :src="require('@/assets/img/' + service.svg)"
+                alt
+              />
             </div>
             <h3>{{ service.title }}</h3>
             <p>{{ service.content }}</p>
@@ -117,7 +123,9 @@
           </v-row>
           <v-container>
             <v-row justify="center">
-              <v-btn to="./portfolio" color="secondary">Voir plus de projets</v-btn>
+              <v-btn to="./portfolio" color="secondary"
+                >Voir plus de projets</v-btn
+              >
             </v-row>
           </v-container>
         </v-container>
@@ -137,7 +145,12 @@
           <v-col cols="12" sm="5">
             <h3>Mes technos front-end</h3>
             <v-row>
-              <v-col cols="6" sm="4" v-for="techno in technosfront" :key="techno.id">
+              <v-col
+                cols="6"
+                sm="4"
+                v-for="techno in technosfront"
+                :key="techno.id"
+              >
                 <ItemTechno :techno="techno" mode="link" class="item__techno" />
               </v-col>
             </v-row>
@@ -145,7 +158,12 @@
           <v-col cols="12" offset-md="2" sm="5" class="technos__block">
             <h3>Mes technos back-end</h3>
             <v-row>
-              <v-col cols="6" sm="4" v-for="techno in technosback" :key="techno.id">
+              <v-col
+                cols="6"
+                sm="4"
+                v-for="techno in technosback"
+                :key="techno.id"
+              >
                 <ItemTechno :techno="techno" mode="link" class="item__techno" />
               </v-col>
             </v-row>
@@ -168,6 +186,8 @@ import technosListQuery from '@/graphql/technosList'
 import Portfolio from '../components/ItemPortfolio.vue'
 import Forme from '../components/Forme.vue'
 import Loading from '@/components/Loading'
+
+import { gsap } from 'gsap'
 
 export default {
   components: {
@@ -278,6 +298,12 @@ export default {
   },
   mounted() {
     this.presentation = this.premierePage.presentation
+    gsap.from('.animationFabien1', {
+      y: 100,
+      opacity: 0,
+      duration: 2,
+      ease: 'back'
+    })
   },
   methods: {
     contactAction() {
@@ -285,6 +311,16 @@ export default {
     },
     getDevisAction() {
       $nuxt.$emit('openDevis', true)
+    },
+    viewHandlerServices() {
+      let tl = gsap.timeline({ repeat: 0 })
+      for (let i = 0; this.premierePage.services.length > i; i++) {
+        tl.from(
+          '.espace__logo__' + i,
+          { y: -50, opacity: 0, duration: 1 },
+          '<.3'
+        )
+      }
     }
   }
 }
@@ -297,20 +333,6 @@ export default {
 
 .services__box {
   margin-top: 1.7em;
-}
-
-.content__home {
-  background-image: url('~@/assets/formebackground.svg');
-  background-position: top right;
-
-  @media screen and (max-width: 1100px) {
-    background-position: top 30%;
-  }
-
-  @media screen and (max-width: 640px) {
-    background-position-y: top;
-    background-position-x: 85%;
-  }
 }
 
 .illustration {
