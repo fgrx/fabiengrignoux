@@ -63,7 +63,7 @@
         <h2>En quoi puis-je vous aider ?</h2>
 
         <v-row v-view.once="viewHandlerServices">
-          <v-col v-for="(service, index) in premierePage.services" :key="index">
+          <v-col cols="12" sm="4" v-for="(service, index) in premierePage.services" :key="index">
             <div :class="'espace__logo espace__logo__' + index">
               <img
                 :class="'illustration__service illustration__service__' + index"
@@ -123,9 +123,7 @@
           </v-row>
           <v-container>
             <v-row justify="center">
-              <v-btn to="./portfolio" color="secondary"
-                >Voir plus de projets</v-btn
-              >
+              <v-btn to="./portfolio" color="secondary">Voir plus de projets</v-btn>
             </v-row>
           </v-container>
         </v-container>
@@ -145,12 +143,7 @@
           <v-col cols="12" sm="5">
             <h3>Mes technos front-end</h3>
             <v-row>
-              <v-col
-                cols="6"
-                sm="4"
-                v-for="techno in technosfront"
-                :key="techno.id"
-              >
+              <v-col cols="6" sm="4" v-for="techno in technosfront" :key="techno.id">
                 <ItemTechno :techno="techno" mode="link" class="item__techno" />
               </v-col>
             </v-row>
@@ -158,12 +151,7 @@
           <v-col cols="12" offset-md="2" sm="5" class="technos__block">
             <h3>Mes technos back-end</h3>
             <v-row>
-              <v-col
-                cols="6"
-                sm="4"
-                v-for="techno in technosback"
-                :key="techno.id"
-              >
+              <v-col cols="6" sm="4" v-for="techno in technosback" :key="techno.id">
                 <ItemTechno :techno="techno" mode="link" class="item__techno" />
               </v-col>
             </v-row>
@@ -344,6 +332,9 @@ export default {
 
 .container__index {
   margin-bottom: 2em;
+  @media screen and (max-width: 640px) {
+    margin-bottom: 0;
+  }
 }
 
 .services__box {
@@ -374,13 +365,13 @@ export default {
 h2 {
   font-family: 'Raleway', sans-serif;
   padding: 1em 0 0.5em 0;
-  font-size: 2.8em;
+  font-size: 3em;
   &.homepage {
     font-size: 2em !important;
   }
   @media screen and (max-width: 640px) {
     text-align: center;
-    font-size: 1.8em;
+    font-size: 2em;
   }
 }
 
@@ -398,12 +389,5 @@ h2 {
       border-left: 4px solid #50389a;
     }
   }
-}
-
-.container__pitch {
-  h2 {
-    font-size: 2em;
-  }
-  font-size: 1.2em;
 }
 </style>

@@ -2,17 +2,10 @@
   <v-row justify="center" align="center" class="flex-sm-row-reverse">
     <v-col cols="12" sm="8">
       <h2>{{ presentation.title }}</h2>
-      <div
-        v-if="presentation.content"
-        v-html="$md.render(presentation.content)"
-      ></div>
+      <div v-if="presentation.content" v-html="$md.render(presentation.content)"></div>
     </v-col>
-    <v-col cols="12" sm="3">
-      <v-img
-        :src="image"
-        alt="Portrait Fabien Grignoux"
-        class="portrait"
-      ></v-img>
+    <v-col cols="12" sm="4" align="center">
+      <v-img :src="image" alt="Portrait Fabien Grignoux" class="portrait"></v-img>
     </v-col>
   </v-row>
 </template>
