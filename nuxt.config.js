@@ -194,13 +194,14 @@ export default {
       'container',
       'container--fluid',
       'language-javascript',
-
       'flex-sm-row-reverse',
       'v-content',
       'input',
       'button',
       'spacer',
-      'textarea'
+      'textarea',
+      'code',
+      'pre'
     ],
     whitelistPatterns: [
       /^v-((?!application).)*$/,
