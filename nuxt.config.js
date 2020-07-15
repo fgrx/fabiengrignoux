@@ -182,6 +182,8 @@ export default {
       'justify-center',
       'container',
       'container--fluid',
+      'language-javascript',
+
       'flex-sm-row-reverse',
       'v-content',
       'input',
@@ -193,7 +195,8 @@ export default {
       /^v-((?!application).)*$/,
       /^theme--light*/,
       /.*-transition/,
-      /^col*/
+      /^col*/,
+      /^hljs*/
     ],
     whitelistPatternsChildren: [/^v-((?!application).)*$/, /^theme--light*/]
   },
