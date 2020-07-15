@@ -142,7 +142,18 @@ export default {
     '@nuxtjs/axios',
     'nuxt-webfontloader',
     'nuxt-material-design-icons',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    [
+      'nuxt-compress',
+      {
+        gzip: {
+          cache: true
+        },
+        brotli: {
+          threshold: 10240
+        }
+      }
+    ]
 
     // [
     // 	'nuxt-fontawesome',

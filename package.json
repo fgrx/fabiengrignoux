@@ -31,6 +31,7 @@
     "image-webpack-loader": "^6.0.0",
     "node-sass": "^4.14.1",
     "nuxt": "^2.0.0",
+    "nuxt-compress": "^2.0.0",
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-jsonld": "^1.4.9",
     "nuxt-material-design-icons": "^1.0.4",
