@@ -181,7 +181,9 @@ export default {
     whitelist: [
       'v-application',
       'v-application--wrap',
-      ' v-application--is-ltr',
+      'v-application--is-ltr',
+      'v-list',
+      'theme--dark',
       'row',
       'col',
       'v-main',
