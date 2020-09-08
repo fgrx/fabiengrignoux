@@ -3,7 +3,7 @@
     <div class="container__index entete__box">
       <section>
         <v-container>
-          <v-row align="center">
+          <v-row>
             <v-col cols="12" sm="6">
               <div
                 v-if="premierePage.headsite"
@@ -63,7 +63,12 @@
         <h2>En quoi puis-je vous aider ?</h2>
 
         <v-row v-view.once="viewHandlerServices">
-          <v-col cols="12" sm="4" v-for="(service, index) in premierePage.services" :key="index">
+          <v-col
+            cols="12"
+            sm="4"
+            v-for="(service, index) in premierePage.services"
+            :key="index"
+          >
             <div :class="'espace__logo espace__logo__' + index">
               <img
                 :class="'illustration__service illustration__service__' + index"
@@ -123,7 +128,9 @@
           </v-row>
           <v-container>
             <v-row justify="center">
-              <v-btn to="./portfolio" color="secondary">Voir plus de projets</v-btn>
+              <v-btn to="./portfolio" color="secondary"
+                >Voir plus de projets</v-btn
+              >
             </v-row>
           </v-container>
         </v-container>
@@ -143,7 +150,12 @@
           <v-col cols="12" sm="5">
             <h3>Mes technos front-end</h3>
             <v-row>
-              <v-col cols="6" sm="4" v-for="techno in technosfront" :key="techno.id">
+              <v-col
+                cols="6"
+                sm="4"
+                v-for="techno in technosfront"
+                :key="techno.id"
+              >
                 <ItemTechno :techno="techno" mode="link" class="item__techno" />
               </v-col>
             </v-row>
@@ -151,7 +163,12 @@
           <v-col cols="12" offset-md="2" sm="5" class="technos__block">
             <h3>Mes technos back-end</h3>
             <v-row>
-              <v-col cols="6" sm="4" v-for="techno in technosback" :key="techno.id">
+              <v-col
+                cols="6"
+                sm="4"
+                v-for="techno in technosback"
+                :key="techno.id"
+              >
                 <ItemTechno :techno="techno" mode="link" class="item__techno" />
               </v-col>
             </v-row>
@@ -388,6 +405,13 @@ h2 {
     .row {
       border-left: 4px solid #50389a;
     }
+  }
+}
+
+.head__site {
+  margin-top: 2em;
+  @media screen and (min-width: 1000px) {
+    margin-top: 4em;
   }
 }
 </style>
