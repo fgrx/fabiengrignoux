@@ -153,7 +153,7 @@
               <v-col
                 cols="6"
                 sm="4"
-                v-for="techno in technosfront"
+                v-for="techno in technosFront"
                 :key="techno.id"
               >
                 <ItemTechno :techno="techno" mode="link" class="item__techno" />
@@ -166,7 +166,7 @@
               <v-col
                 cols="6"
                 sm="4"
-                v-for="techno in technosback"
+                v-for="techno in technosBack"
                 :key="techno.id"
               >
                 <ItemTechno :techno="techno" mode="link" class="item__techno" />
@@ -217,8 +217,8 @@ export default {
     return {
       portfolios: [],
       premierePage: {},
-      technosback: [],
-      technosfront: []
+      technosBack: [],
+      technosFront: []
     }
   },
   head() {
@@ -273,33 +273,51 @@ export default {
         'Javascript, développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular'
     }
   },
-  apollo: {
-    portfolios: {
+
+  async asyncData({ app }) {
+    const premierePageQuery = await app.apolloProvider.defaultClient.query({
+      query: premPageQuery
+    })
+    const premierePage = premierePageQuery.data.premierePage
+
+    const portfoliosQuery = await app.apolloProvider.defaultClient.query({
       query: porfoliosQuery,
       variables: {
         limit: 6
       }
-    },
-    // clients: {
-    //   query: clientsListQuery
-    // },
-    premierePage: {
-      query: premPageQuery
-    },
-    technosback: {
+    })
+    const portfolios = portfoliosQuery.data.portfolios
+
+    const technosBackQuery = await app.apolloProvider.defaultClient.query({
       query: technosListQuery,
       variables: {
         type: 'back'
       },
       update: (data) => data.technos
-    },
-    technosfront: {
+    })
+    const technosBack = technosBackQuery.data.technos
+
+    const technosFrontQuery = await app.apolloProvider.defaultClient.query({
       query: technosListQuery,
       variables: {
         type: 'front'
       },
       update: (data) => data.technos
+    })
+    const technosFront = technosFrontQuery.data.technos
+
+    return {
+      premierePage,
+      portfolios,
+      technosBack,
+      technosFront
     }
+  },
+
+  apollo: {
+    // clients: {
+    //   query: clientsListQuery
+    // },
   },
   mounted() {
     this.presentation = this.premierePage.presentation
