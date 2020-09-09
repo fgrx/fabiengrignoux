@@ -3142,6 +3142,7 @@ export default {}
 <style lang="scss" scoped>
 #fabienSVG {
   max-width: 100%;
+  max-height: 600px;
 }
 
 #obj__balise {

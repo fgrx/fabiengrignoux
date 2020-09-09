@@ -16,15 +16,7 @@
 	text-align: center;
 }
 
-/* transitions de page */
-.page-enter-active,
-.page-leave-active {
-	transition: opacity 0.5s;
-}
-.page-enter,
-.page-leave-active {
-	opacity: 0;
-}
+
 
 .container {
 	transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);

@@ -26,7 +26,9 @@
 
     <v-main>
       <v-container class="pa-0 ma-0" fluid>
+        <transition name="page-site-transition" mode="out-in">
         <nuxt />
+        </transition>
       </v-container>
       <ContactForm />
 
@@ -99,14 +101,14 @@
 import ContactForm from '../components/ContactForm.vue'
 export default {
   components: {
-    ContactForm,
+    ContactForm
   },
   data() {
     return {
       clipped: false,
       drawer: false,
       fixed: false,
-   
+
       items: [
         {
           icon: 'home',
@@ -139,20 +141,30 @@ export default {
     openDevis() {
       $nuxt.$emit('openDevis', true)
     }
-  },
-
-
- 
+  }
 }
 </script>
 
 
 <style lang="scss">
-pre{
-  padding:1em;
-  background:rgb(39, 39, 39) !important;
-  color:white;
-  margin-bottom:2em;
+/* Animation de changement de page */
+.page-site-transition-enter-active,
+.page-site-transition-leave-active {
+  transition: opacity 0.4s, transform 0.3s ease-in-out;
+}
+
+.page-site-transition-enter {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+/* fin de changement de page */
+
+pre {
+  padding: 1em;
+  background: rgb(39, 39, 39) !important;
+  color: white;
+  margin-bottom: 2em;
 }
 
 .v-application code {
@@ -168,13 +180,11 @@ pre{
 </style>
 
 <style lang="scss" scoped>
-.v-btn{
-   text-transform:none !important;
+.v-btn {
+  text-transform: none !important;
 }
 
-.v-btn--active{
-background:none;
+.v-btn--active {
+  background: none;
 }
-
-
 </style>

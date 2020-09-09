@@ -347,13 +347,6 @@ export default {
   min-height: 160px;
 }
 
-.container__index {
-  margin-bottom: 2em;
-  @media screen and (max-width: 640px) {
-    margin-bottom: 0;
-  }
-}
-
 .services__box {
   margin-top: 1.7em;
 }

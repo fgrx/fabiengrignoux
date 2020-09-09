@@ -2,7 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 const { createApolloFetch } = require('apollo-fetch')
 
 const buildRoutes = async () => {
-  const routes = []
+  const routes = ["/"]
   const uri = 'https://fgrx-strapi.herokuapp.com/graphql'
   const apolloFetch = createApolloFetch({ uri })
   const queryPortfolio = `
