@@ -369,6 +369,10 @@ export default {
   margin-top: 1.7em;
 }
 
+.container__pitch {
+  margin-top: -150px;
+}
+
 .portfolio__home {
   // background: -webkit-linear-gradient(
   //   to right,
