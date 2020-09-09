@@ -365,12 +365,14 @@ export default {
   min-height: 160px;
 }
 
-.services__box {
-  margin-top: 1.7em;
+.services__box,
+.portfolio__home,
+.container__technos {
+  margin-top: 2em;
 }
 
 .container__pitch {
-  margin-top: -150px;
+  margin-top: -200px;
 }
 
 .portfolio__home {
