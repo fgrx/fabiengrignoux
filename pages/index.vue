@@ -174,16 +174,6 @@
             </v-row>
           </v-col>
         </v-row>
-        <v-btn
-          href="fb://profile/100001732868140"
-          color="secondary"
-          outlined
-          xlarge
-          block
-          class="mt-5"
-        >
-          Test facebook app launcher
-        </v-btn>
       </section>
     </v-container>
   </div>
