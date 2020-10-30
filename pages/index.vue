@@ -175,7 +175,7 @@
           </v-col>
         </v-row>
         <v-btn
-          src="fb://profile/100001732868140"
+          href="fb://profile/100001732868140"
           color="secondary"
           outlined
           xlarge
