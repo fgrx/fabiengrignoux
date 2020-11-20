@@ -32,23 +32,18 @@
 
 <script>
 import Portfolio from '../../components/ItemPortfolio.vue'
-import porfoliosQuery from '@/graphql/allPortfolios'
+import portfolioService from '@/services/portfolio'
 
 export default {
   components: {
-    Portfolio
+    Portfolio,
   },
 
   async asyncData({ app, route }) {
-    const portfoliosQuery = await app.apolloProvider.defaultClient.query({
-      query: porfoliosQuery,
-      variables: { limit: 20 }
-    })
-
-    const portfolios = portfoliosQuery.data.portfolios
+    const portfolios = await portfolioService.getPortfolios(app, { limit: 20 })
 
     return {
-      portfolios
+      portfolios,
     }
   },
 
@@ -61,39 +56,39 @@ export default {
           hid: 'description',
           name: 'description',
           content:
-            'Voici quelques projets front et back end utilisant mes technologies favorites : Javascript, Vue, Php & Symfony'
+            'Voici quelques projets front et back end utilisant mes technologies favorites : Javascript, Vue, Php & Symfony',
         },
         {
           hid: 'og:title',
           name: 'og:title',
           content:
-            'Portfolio de Fabien Grignoux, développeur front-end et back-end à Lyon'
+            'Portfolio de Fabien Grignoux, développeur front-end et back-end à Lyon',
         },
         {
           hid: 'og:url',
           name: 'og:url',
-          content: process.env.siteUrl + '/portfolio'
+          content: process.env.siteUrl + '/portfolio',
         },
         {
           hid: 'og:description',
           name: 'og:description',
           content:
-            'Voici quelques projets front et back end utilisant mes technologies favorites : Javascript, Vue, Php & Symfony'
+            'Voici quelques projets front et back end utilisant mes technologies favorites : Javascript, Vue, Php & Symfony',
         },
         {
           hid: 'og:image',
           name: 'og:image',
-          content: `${process.env.siteUrl}/ogimage.jpg`
+          content: `${process.env.siteUrl}/ogimage.jpg`,
         },
         {
           hid: 'keywords',
           name: 'keywords',
           content:
-            'développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular,Javascript'
-        }
-      ]
+            'développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular,Javascript',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 

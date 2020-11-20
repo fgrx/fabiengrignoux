@@ -7,7 +7,12 @@
         <div class="description">{{ portfolio.description }}</div>
 
         <div class="links">
-          <v-btn v-if="portfolio.url" :href="portfolio.url" target="blank" color="primary">
+          <v-btn
+            v-if="portfolio.url"
+            :href="portfolio.url"
+            target="blank"
+            color="primary"
+          >
             <v-icon>mdi-link</v-icon>Voir en ligne
           </v-btn>
           <v-btn
@@ -33,7 +38,11 @@
                 ></v-img>
                 <div class="portfolio__techno_list">
                   <div v-for="techno in portfolio.technos" :key="techno.id">
-                    <ItemTechno :techno="techno" mode="link" class="item__techno" />
+                    <ItemTechno
+                      :techno="techno"
+                      mode="link"
+                      class="item__techno"
+                    />
                   </div>
                 </div>
               </div>
@@ -46,7 +55,9 @@
     <v-row>
       <v-col cols="12" sm="7">
         <div class="content" v-html="$md.render(portfolio.content)"></div>
-        <div class="phrasechoc" v-if="portfolio.phrasechoc">{{ portfolio.phrasechoc }}</div>
+        <div class="phrasechoc" v-if="portfolio.phrasechoc">
+          {{ portfolio.phrasechoc }}
+        </div>
       </v-col>
 
       <v-col cols="12" sm="5">
@@ -75,30 +86,27 @@
 
 <script>
 import ItemTechno from '../../components/ItemTechno.vue'
-import portfolioQuery from '@/graphql/getPortfolio'
+import portfolioService from '@/services/portfolio'
 
 export default {
   components: {
-    ItemTechno
+    ItemTechno,
   },
 
   data() {
     return {
       imgToOpen: '',
-      dialog: false
+      dialog: false,
     }
   },
 
   async asyncData({ app, route }) {
-    const portfolios = await app.apolloProvider.defaultClient.query({
-      query: portfolioQuery,
-      variables: { slug: route.params.slug }
+    const portfolio = await portfolioService.getPortfolio(app, {
+      slug: route.params.slug,
     })
 
-    const portfolio = portfolios.data.portfolios[0]
-
     return {
-      portfolio
+      portfolio,
     }
   },
 
@@ -111,13 +119,13 @@ export default {
           : this.portfolio.image.size.large.url
 
       return imageDisplay
-    }
+    },
   },
   methods: {
     openDialog(img) {
       this.dialog = true
       this.imgToOpen = img
-    }
+    },
   },
   head() {
     return {
@@ -129,41 +137,41 @@ export default {
           name: 'description',
           content:
             'Portfolio développement frontend & backend : Développement du projet' +
-            this.portfolio.description
+            this.portfolio.description,
         },
         {
           hid: 'og:title',
           name: 'og:title',
           content:
             'Portfolio Fabien Grignoux, développeur web : ' +
-            this.portfolio.title
+            this.portfolio.title,
         },
         {
           hid: 'og:url',
           name: 'og:url',
-          content: process.env.siteUrl + '/portfolio/' + this.portfolio.slug
+          content: process.env.siteUrl + '/portfolio/' + this.portfolio.slug,
         },
         {
           hid: 'og:description',
           name: 'og:description',
           content:
             'Portfolio développement frontend & backend : Développement du projet' +
-            this.portfolio.description
+            this.portfolio.description,
         },
         {
           hid: 'og:image',
           name: 'og:image',
-          content: `${this.image}`
+          content: `${this.image}`,
         },
         {
           hid: 'keywords',
           name: 'keywords',
           content:
-            'développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular,Javascript'
-        }
-      ]
+            'développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular,Javascript',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 

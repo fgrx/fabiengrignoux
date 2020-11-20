@@ -26,19 +26,14 @@
 </template>
 
 <script>
-import postQuery from '@/graphql/getPublication'
+import postsService from '@/services/posts'
 
 export default {
   async asyncData({ app, route }) {
-    const apolloQuery = await app.apolloProvider.defaultClient.query({
-      query: postQuery,
-      variables: { slug: route.params.slug }
-    })
-
-    const post = apolloQuery.data.articles[0]
+    const post = await postsService.getSinglePost(app, route.params.slug)
 
     return {
-      post
+      post,
     }
   },
 
@@ -54,7 +49,7 @@ export default {
     },
     contentCalcul() {
       return this.$md.render(this.post.content)
-    }
+    },
   },
 
   head() {
@@ -64,37 +59,37 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: this.post.description
+          content: this.post.description,
         },
         {
           hid: 'og:title',
           name: 'og:title',
-          content: this.post.title + 'Fabien Grignoux, développeur web '
+          content: this.post.title + 'Fabien Grignoux, développeur web ',
         },
         {
           hid: 'og:url',
           name: 'og:url',
-          content: process.env.siteUrl + '/portfolio/' + this.post.slug
+          content: process.env.siteUrl + '/portfolio/' + this.post.slug,
         },
         {
           hid: 'og:description',
           name: 'og:description',
-          content: +this.post.description
+          content: +this.post.description,
         },
         {
           hid: 'og:image',
           name: 'og:image',
-          content: `${this.image}`
+          content: `${this.image}`,
         },
         {
           hid: 'keywords',
           name: 'keywords',
           content:
-            'développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular,Javascript'
-        }
-      ]
+            'développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular,Javascript',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 

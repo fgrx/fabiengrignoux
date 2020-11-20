@@ -182,15 +182,14 @@
 <script>
 import ItemTechno from '../components/ItemTechno.vue'
 import PresentationPremPage from '../components/PresentationPremPage.vue'
-import gql from 'graphql-tag'
-import porfoliosQuery from '@/graphql/allPortfolios'
-import premPageQuery from '@/graphql/premPage'
-import technosListQuery from '@/graphql/technosList'
-//import clientsListQuery from '@/graphql/clientsList'
-
-import Portfolio from '../components/ItemPortfolio.vue'
 import Forme from '../components/Forme.vue'
 import Loading from '@/components/Loading'
+import Portfolio from '../components/ItemPortfolio.vue'
+
+import portfolioService from '@/services/portfolio'
+import technoService from '@/services/technos'
+
+import premPageQuery from '@/graphql/premPage'
 
 import { gsap } from 'gsap'
 
@@ -200,25 +199,25 @@ export default {
       component: import('@/components/AnimationFabien'),
       loading: Loading,
       delay: 10,
-      timeout: 6000
+      timeout: 6000,
     }),
     AnimationFabien2: () => ({
       component: import('@/components/AnimationFabien2'),
       loading: Loading,
       delay: 10,
-      timeout: 6000
+      timeout: 6000,
     }),
     Forme,
     Portfolio,
     PresentationPremPage,
-    ItemTechno
+    ItemTechno,
   },
   data() {
     return {
       portfolios: [],
       premierePage: {},
       technosBack: [],
-      technosFront: []
+      technosFront: [],
     }
   },
   head() {
@@ -228,35 +227,35 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: process.env.siteDescription
+          content: process.env.siteDescription,
         },
         {
           hid: 'og:title',
           name: 'og:title',
-          content: process.env.siteTitle
+          content: process.env.siteTitle,
         },
         {
           hid: 'og:url',
           name: 'og:url',
-          content: process.env.siteUrl
+          content: process.env.siteUrl,
         },
         {
           hid: 'og:description',
           name: 'og:description',
-          content: process.env.siteDescription
+          content: process.env.siteDescription,
         },
         {
           hid: 'og:image',
           name: 'og:image',
-          content: `${process.env.siteUrl}/ogimage.jpg`
+          content: `${process.env.siteUrl}/ogimage.jpg`,
         },
         {
           hid: 'keywords',
           name: 'keywords',
           content:
-            'développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular,Javascript'
-        }
-      ]
+            'développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular,Javascript',
+        },
+      ],
     }
   },
   jsonld() {
@@ -270,62 +269,35 @@ export default {
       contentLocation: 'Lyon France',
       inLanguage: 'fr',
       keywords:
-        'Javascript, développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular'
+        'Javascript, développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular',
     }
   },
 
   async asyncData({ app }) {
     const premierePageQuery = await app.apolloProvider.defaultClient.query({
-      query: premPageQuery
+      query: premPageQuery,
     })
     const premierePage = premierePageQuery.data.premierePage
 
-    const portfoliosQuery = await app.apolloProvider.defaultClient.query({
-      query: porfoliosQuery,
-      variables: {
-        limit: 6
-      }
-    })
-    const portfolios = portfoliosQuery.data.portfolios
-
-    const technosBackQuery = await app.apolloProvider.defaultClient.query({
-      query: technosListQuery,
-      variables: {
-        type: 'back'
-      },
-      update: (data) => data.technos
-    })
-    const technosBack = technosBackQuery.data.technos
-
-    const technosFrontQuery = await app.apolloProvider.defaultClient.query({
-      query: technosListQuery,
-      variables: {
-        type: 'front'
-      },
-      update: (data) => data.technos
-    })
-    const technosFront = technosFrontQuery.data.technos
+    const portfolios = await portfolioService.getPortfolios(app, { limit: 6 })
+    const technosBack = await technoService.getTechnos(app, 'back')
+    const technosFront = await technoService.getTechnos(app, 'front')
 
     return {
       premierePage,
       portfolios,
       technosBack,
-      technosFront
+      technosFront,
     }
   },
 
-  apollo: {
-    // clients: {
-    //   query: clientsListQuery
-    // },
-  },
   mounted() {
     this.presentation = this.premierePage.presentation
     gsap.to('.animationFabien1', {
       y: -100,
       opacity: 1,
       duration: 2,
-      ease: 'back'
+      ease: 'back',
     })
   },
   methods: {
@@ -344,8 +316,8 @@ export default {
           '<.3'
         )
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -376,17 +348,6 @@ export default {
 }
 
 .portfolio__home {
-  // background: -webkit-linear-gradient(
-  //   to right,
-  //   #1d976cff,
-  //   #93f9b9ff
-  // ); /* Chrome 10-25, Safari 5.1-6 */
-  // background: linear-gradient(
-  //   to right,
-  //   #1d976cff,
-  //   #93f9b9ff
-  // );
-
   background: #f3f0f0;
 
   //height: 50vh;

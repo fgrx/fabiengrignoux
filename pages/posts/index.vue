@@ -13,24 +13,20 @@
 
 <script>
 import ItemPost from '../../components/ItemPost.vue'
-import postsQuery from '@/graphql/allPublications'
+import postsService from '@/services/posts'
 
 export default {
   components: {
-    ItemPost
+    ItemPost,
   },
 
   async asyncData({ app }) {
-    const apolloQuery = await app.apolloProvider.defaultClient.query({
-      query: postsQuery
-    })
-
-    const posts = apolloQuery.data.articles
+    const posts = await postsService.getPosts(app)
 
     return {
-      posts
+      posts,
     }
-  }
+  },
 }
 </script>
 

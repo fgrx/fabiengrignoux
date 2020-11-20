@@ -1,9 +1,9 @@
 <template>
   <v-app dark>
- 
+
 
     <v-app-bar color="transparent" flat fixed >
-      
+
 
        <!-- <v-toolbar-title><v-btn :to="{name:'index'}" text input-value="transparent">Fabien Grignoux - dev web</v-btn></v-toolbar-title> -->
       <v-spacer />
@@ -98,10 +98,11 @@
 </template>
 
 <script>
-import ContactForm from '../components/ContactForm.vue'
 export default {
   components: {
-    ContactForm
+    ContactForm: () => ({
+      component: import('@/components/ContactForm.vue'),
+    }),
   },
   data() {
     return {
@@ -113,24 +114,24 @@ export default {
         {
           icon: 'home',
           title: 'Accueil',
-          to: '/'
+          to: '/',
         },
         {
           icon: 'apps',
           title: 'Portfolio',
-          to: '/portfolio'
+          to: '/portfolio',
         },
         {
           icon: 'book',
           title: 'Publications',
-          to: '/posts'
-        }
+          to: '/posts',
+        },
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
       leftDrawer: false,
-      title: 'Fabien Grignoux'
+      title: 'Fabien Grignoux',
     }
   },
 
@@ -140,8 +141,8 @@ export default {
     },
     openDevis() {
       $nuxt.$emit('openDevis', true)
-    }
-  }
+    },
+  },
 }
 </script>
 
