@@ -2,13 +2,13 @@ import colors from 'vuetify/es5/util/colors'
 const { createApolloFetch } = require('apollo-fetch')
 
 const buildRoutes = async () => {
-  const routes = ["/"]
+  const routes = ['/']
   const uri = 'https://fgrx-strapi.herokuapp.com/graphql'
   const apolloFetch = createApolloFetch({ uri })
   const queryPortfolio = `
   query Porfolios {
     portfolios {
-      slug 
+      slug
     }
   }
       `
@@ -22,7 +22,7 @@ const buildRoutes = async () => {
   const queryPosts = `
   query Posts {
     articles {
-      slug 
+      slug
     }
   }
       `
@@ -36,7 +36,7 @@ const buildRoutes = async () => {
   const queryTechnos = `
   query Technos {
     technos {
-      slug 
+      slug
     }
   }
       `
@@ -51,7 +51,6 @@ const buildRoutes = async () => {
 }
 
 export default {
-  mode: 'universal',
   target: 'static',
   /*
    ** Headers of the page
@@ -74,20 +73,13 @@ export default {
       }
     ],
 
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-
-      // {
-      // 	rel: 'stylesheet',
-      // 	href: 'https://fonts.googleapis.com/css2?family=Nunito&family=Raleway&display=swap'
-      // }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  webfontloader: {
-    google: {
-      families: ['Nunito', 'Raleway'] //Loads Lato font with weights 400 and 700
-    }
-  },
+  // webfontloader: {
+  //   google: {
+  //     families: ['Nunito', 'Raleway'] //Loads Lato font with weights 400 and 700
+  //   }
+  // },
   env: {
     siteUrl: 'https://developpeurfullstack.fr',
     siteTitle: 'Fabien Grignoux, développeur web à Lyon',
@@ -130,6 +122,16 @@ export default {
       {
         id: 'UA-141104841-1'
       }
+    ],
+    [
+      '@nuxtjs/google-fonts',
+      {
+        display: 'swap',
+        families: {
+          Nunito: true,
+          ralewat: true
+        }
+      }
     ]
   ],
   /*
@@ -140,7 +142,7 @@ export default {
     '@nuxtjs/apollo',
     '@nuxtjs/markdownit',
     '@nuxtjs/axios',
-    'nuxt-webfontloader',
+    //'nuxt-webfontloader',
     'nuxt-material-design-icons',
     '@nuxtjs/sitemap',
     [
@@ -154,22 +156,6 @@ export default {
         }
       }
     ]
-
-    // [
-    // 	'nuxt-fontawesome',
-    // 	{
-    // 		imports: [
-    // 			{
-    // 				set: '@fortawesome/free-solid-svg-icons',
-    // 				icons: [ 'fas' ]
-    // 			},
-    // 			{
-    // 				set: '@fortawesome/free-brands-svg-icons',
-    // 				icons: [ 'fab' ]
-    // 			}
-    // 		]
-    // 	}
-    // ]
   ],
   markdownit: {
     preset: 'default',

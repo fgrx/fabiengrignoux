@@ -71,6 +71,7 @@
           >
             <div :class="'espace__logo espace__logo__' + index">
               <img
+                loading="lazy"
                 :class="'illustration__service illustration__service__' + index"
                 :src="require('@/assets/img/' + service.svg)"
                 alt
