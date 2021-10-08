@@ -23,7 +23,7 @@
             </div>
 
             <v-btn color="primary" outlined>
-              <v-icon>mdi-eye</v-icon>Voir
+              <v-icon>$vuetify.icons.mdiEye</v-icon>Voir
             </v-btn>
           </div>
         </div>

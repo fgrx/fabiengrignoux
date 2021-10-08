@@ -12,12 +12,12 @@
 
       <div class="d-none d-lg-block">
         <v-btn v-for="(item, i) in items" :key="i" :to="item.to" router exact text color="#091584">
-          <i class="material-icons">{{ item.icon }}</i>
+
           {{ item.title }}
         </v-btn>
       </div>
      <v-btn icon @click.stop="rightDrawer = !rightDrawer" class="d-lg-none">
-        <i class="material-icons">menu</i>
+        <v-icon>$vuetify.icons.mdiMenu</v-icon>
       </v-btn>
 
 
@@ -58,12 +58,12 @@
 
               <p>
                 <v-btn href="mailto:fabien.grignoux@outlook.com" color="secondary" text>
-                  <i class="material-icons">email</i> fabien.grignoux@outlook.com
+                  <v-icon>$vuetify.icons.mdiEmail</v-icon> fabien.grignoux@outlook.com
                 </v-btn>
               </p>
                             <p>
                 <v-btn href="tel:+33624867169" color="secondary" text>
-                 <i class="material-icons">phone</i> 06.24.86.71.69
+                <v-icon>$vuetify.icons.mdiPhone</v-icon> phone 06.24.86.71.69
                 </v-btn>
               </p>
                             <p>
@@ -72,19 +72,19 @@
                   color="secondary"
                   text
                 >
-                  <i class="material-icons">face</i> LinkedIn
+                 <v-icon>$vuetify.icons.mdiLinkedin</v-icon> LinkedIn
                 </v-btn>
               </p>
             </v-col>
             <v-col>
               <p>
                 <v-btn @click="openDialog" color="accent" width="230" class="button__header">
-                  <i class="material-icons">email</i> Me contacter
+                 <v-icon>$vuetify.icons.mdiEmail</v-icon> Me contacter
                 </v-btn>
               </p>
               <p>
                 <v-btn @click="openDevis" color="secondary" width="230" class="button__header">
-                <i class="material-icons">description</i> Demander un devis
+               <v-icon>$vuetify.icons.mdiDescription</v-icon> Demander un devis
                 </v-btn>
               </p>
             </v-col>

@@ -19,7 +19,7 @@
                   width="230"
                   class="button__header"
                 >
-                  <i class="material-icons">email</i>
+                  <v-icon>$vuetify.icons.mdiEmail</v-icon>
                   Me contacter
                 </v-btn>
                 <v-btn
@@ -29,7 +29,7 @@
                   width="230"
                   class="button__header"
                 >
-                  <i class="material-icons">description</i>
+                  <v-icon>$vuetify.icons.mdiDescription</v-icon>
                   Demander un devis
                 </v-btn>
               </div>
@@ -72,6 +72,8 @@
             <div :class="'espace__logo espace__logo__' + index">
               <img
                 loading="lazy"
+                width="200"
+                height="150"
                 :class="'illustration__service illustration__service__' + index"
                 :src="require('@/assets/img/' + service.svg)"
                 alt
@@ -129,7 +131,7 @@
           </v-row>
           <v-container>
             <v-row justify="center">
-              <v-btn to="./portfolio" color="secondary"
+              <v-btn class="mt-4" to="./portfolio" color="secondary"
                 >Voir plus de projets</v-btn
               >
             </v-row>
@@ -200,25 +202,25 @@ export default {
       component: import('@/components/AnimationFabien'),
       loading: Loading,
       delay: 10,
-      timeout: 6000,
+      timeout: 6000
     }),
     AnimationFabien2: () => ({
       component: import('@/components/AnimationFabien2'),
       loading: Loading,
       delay: 10,
-      timeout: 6000,
+      timeout: 6000
     }),
     Forme,
     Portfolio,
     PresentationPremPage,
-    ItemTechno,
+    ItemTechno
   },
   data() {
     return {
       portfolios: [],
       premierePage: {},
       technosBack: [],
-      technosFront: [],
+      technosFront: []
     }
   },
   head() {
@@ -228,35 +230,35 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: process.env.siteDescription,
+          content: process.env.siteDescription
         },
         {
           hid: 'og:title',
           name: 'og:title',
-          content: process.env.siteTitle,
+          content: process.env.siteTitle
         },
         {
           hid: 'og:url',
           name: 'og:url',
-          content: process.env.siteUrl,
+          content: process.env.siteUrl
         },
         {
           hid: 'og:description',
           name: 'og:description',
-          content: process.env.siteDescription,
+          content: process.env.siteDescription
         },
         {
           hid: 'og:image',
           name: 'og:image',
-          content: `${process.env.siteUrl}/ogimage.jpg`,
+          content: `${process.env.siteUrl}/ogimage.jpg`
         },
         {
           hid: 'keywords',
           name: 'keywords',
           content:
-            'développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular,Javascript',
-        },
-      ],
+            'développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular,Javascript'
+        }
+      ]
     }
   },
   jsonld() {
@@ -270,13 +272,13 @@ export default {
       contentLocation: 'Lyon France',
       inLanguage: 'fr',
       keywords:
-        'Javascript, développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular',
+        'Javascript, développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular'
     }
   },
 
   async asyncData({ app }) {
     const premierePageQuery = await app.apolloProvider.defaultClient.query({
-      query: premPageQuery,
+      query: premPageQuery
     })
     const premierePage = premierePageQuery.data.premierePage
 
@@ -288,7 +290,7 @@ export default {
       premierePage,
       portfolios,
       technosBack,
-      technosFront,
+      technosFront
     }
   },
 
@@ -298,7 +300,7 @@ export default {
       y: -100,
       opacity: 1,
       duration: 2,
-      ease: 'back',
+      ease: 'back'
     })
   },
   methods: {
@@ -317,8 +319,8 @@ export default {
           '<.3'
         )
       }
-    },
-  },
+    }
+  }
 }
 </script>
 

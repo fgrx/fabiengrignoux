@@ -1,4 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
+import * as mdi from '@mdi/js'
+
 const { createApolloFetch } = require('apollo-fetch')
 
 const buildRoutes = async () => {
@@ -142,8 +144,6 @@ export default {
     '@nuxtjs/apollo',
     '@nuxtjs/markdownit',
     '@nuxtjs/axios',
-    //'nuxt-webfontloader',
-    'nuxt-material-design-icons',
     '@nuxtjs/sitemap',
     [
       'nuxt-compress',
@@ -206,6 +206,22 @@ export default {
    ** https://github.com/nuxt-community/vuetify-module
    */
   vuetify: {
+    icons: {
+      iconfont: 'mdiSvg',
+      values: {
+        mdiLink: mdi.mdiLink,
+        mdiEye: mdi.mdiEye,
+        mdiGithub: mdi.mdiGithub,
+        mdiLinkedin: mdi.mdiFaceMan,
+        mdiPhone: mdi.mdiPhone,
+        mdiEmail: mdi.mdiEmail,
+        mdiDescription: mdi.mdiFileDocument,
+        mdiMenu: mdi.mdiMenu,
+        mdiBook: mdi.mdiBook,
+        mdiApps: mdi.mdiApps,
+        mdiHome: mdi.mdiHome
+      }
+    },
     customVariables: ['~/assets/variables.scss'],
     theme: {
       dark: false,

@@ -13,7 +13,7 @@
             target="blank"
             color="primary"
           >
-            <v-icon>mdi-link</v-icon>Voir en ligne
+            <v-icon>$vuetify.icons.mdiLink</v-icon>Voir en ligne
           </v-btn>
           <v-btn
             v-if="portfolio.urlgithub"
@@ -21,7 +21,7 @@
             target="blank"
             color="secondary"
           >
-            <v-icon>mdi-github</v-icon>Github
+            <v-icon>$vuetify.icons.mdiGithub</v-icon>Github
           </v-btn>
         </div>
       </v-col>
@@ -90,23 +90,23 @@ import portfolioService from '@/services/portfolio'
 
 export default {
   components: {
-    ItemTechno,
+    ItemTechno
   },
 
   data() {
     return {
       imgToOpen: '',
-      dialog: false,
+      dialog: false
     }
   },
 
   async asyncData({ app, route }) {
     const portfolio = await portfolioService.getPortfolio(app, {
-      slug: route.params.slug,
+      slug: route.params.slug
     })
 
     return {
-      portfolio,
+      portfolio
     }
   },
 
@@ -119,13 +119,13 @@ export default {
           : this.portfolio.image.size.large.url
 
       return imageDisplay
-    },
+    }
   },
   methods: {
     openDialog(img) {
       this.dialog = true
       this.imgToOpen = img
-    },
+    }
   },
   head() {
     return {
@@ -137,41 +137,41 @@ export default {
           name: 'description',
           content:
             'Portfolio développement frontend & backend : Développement du projet' +
-            this.portfolio.description,
+            this.portfolio.description
         },
         {
           hid: 'og:title',
           name: 'og:title',
           content:
             'Portfolio Fabien Grignoux, développeur web : ' +
-            this.portfolio.title,
+            this.portfolio.title
         },
         {
           hid: 'og:url',
           name: 'og:url',
-          content: process.env.siteUrl + '/portfolio/' + this.portfolio.slug,
+          content: process.env.siteUrl + '/portfolio/' + this.portfolio.slug
         },
         {
           hid: 'og:description',
           name: 'og:description',
           content:
             'Portfolio développement frontend & backend : Développement du projet' +
-            this.portfolio.description,
+            this.portfolio.description
         },
         {
           hid: 'og:image',
           name: 'og:image',
-          content: `${this.image}`,
+          content: `${this.image}`
         },
         {
           hid: 'keywords',
           name: 'keywords',
           content:
-            'développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular,Javascript',
-        },
-      ],
+            'développeur, front,back, front-end,back-end fullstack, lyon, php, symfony, nuxt,vue.js,angular,Javascript'
+        }
+      ]
     }
-  },
+  }
 }
 </script>
 
