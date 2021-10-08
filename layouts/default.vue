@@ -16,7 +16,7 @@
           {{ item.title }}
         </v-btn>
       </div>
-     <v-btn icon @click.stop="rightDrawer = !rightDrawer" class="d-lg-none">
+     <v-btn aria-label="menu" icon @click.stop="rightDrawer = !rightDrawer" class="d-lg-none">
         <v-icon>$vuetify.icons.mdiMenu</v-icon>
       </v-btn>
 
