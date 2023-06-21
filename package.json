@@ -31,7 +31,7 @@
     "highlight.js": "^10.0.3",
     "image-webpack-loader": "^6.0.0",
     "node-sass": "^4.14.1",
-    "nuxt": "^2.0.0",
+    "nuxt": "^3.4.3",
     "nuxt-compress": "^4.1.0",
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-jsonld": "^1.4.9",
